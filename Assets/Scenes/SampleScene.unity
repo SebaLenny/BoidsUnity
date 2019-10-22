@@ -281,41 +281,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: aligmentStrenght
-      value: 0.181
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: cohesionStrenght
-      value: 0.198
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: randomStartingVelocity
-      value: 0.273
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: startVelocity.z
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: reaccelerationForce
-      value: 0.19
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: maxRadious
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: maxVelocity
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa1a4dafb8c005744b28ee10c905f148, type: 3}
 --- !u!1001 &438702255
@@ -384,41 +349,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: separationStrenght
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: aligmentStrenght
-      value: 0.181
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: cohesionStrenght
-      value: 0.198
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: startVelocity.z
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: reaccelerationForce
-      value: 0.19
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: maxRadious
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: maxVelocity
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa1a4dafb8c005744b28ee10c905f148, type: 3}
@@ -489,41 +419,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: aligmentStrenght
-      value: 0.181
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: cohesionStrenght
-      value: 0.198
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: randomStartingVelocity
-      value: 0.273
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: startVelocity.z
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: reaccelerationForce
-      value: 0.19
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: maxRadious
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: maxVelocity
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa1a4dafb8c005744b28ee10c905f148, type: 3}
 --- !u!1001 &473319938
@@ -551,7 +446,7 @@ PrefabInstance:
     - target: {fileID: 3192901241293007514, guid: aa1a4dafb8c005744b28ee10c905f148,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.46
+      value: -7.96
       objectReference: {fileID: 0}
     - target: {fileID: 3192901241293007514, guid: aa1a4dafb8c005744b28ee10c905f148,
         type: 3}
@@ -592,31 +487,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: aligmentStrenght
-      value: 0.181
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: cohesionStrenght
-      value: 0.198
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: reaccelerationForce
-      value: 0.19
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: maxRadious
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: maxVelocity
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa1a4dafb8c005744b28ee10c905f148, type: 3}
@@ -687,41 +557,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: separationStrenght
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: aligmentStrenght
-      value: 0.181
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: cohesionStrenght
-      value: 0.198
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: startVelocity.z
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: reaccelerationForce
-      value: 0.19
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: maxRadious
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: maxVelocity
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa1a4dafb8c005744b28ee10c905f148, type: 3}
 --- !u!1001 &689007246
@@ -749,7 +584,7 @@ PrefabInstance:
     - target: {fileID: 3192901241293007514, guid: aa1a4dafb8c005744b28ee10c905f148,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.18
+      value: -8.68
       objectReference: {fileID: 0}
     - target: {fileID: 3192901241293007514, guid: aa1a4dafb8c005744b28ee10c905f148,
         type: 3}
@@ -790,36 +625,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: separationStrenght
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: aligmentStrenght
-      value: 0.181
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: cohesionStrenght
-      value: 0.198
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: reaccelerationForce
-      value: 0.19
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: maxRadious
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: maxVelocity
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa1a4dafb8c005744b28ee10c905f148, type: 3}
@@ -909,7 +714,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 3, z: -6.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -982,41 +787,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: separationStrenght
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: aligmentStrenght
-      value: 0.181
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: cohesionStrenght
-      value: 0.198
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: startVelocity.z
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: reaccelerationForce
-      value: 0.19
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: maxRadious
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: maxVelocity
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa1a4dafb8c005744b28ee10c905f148, type: 3}
 --- !u!1001 &784391674
@@ -1086,41 +856,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: separationStrenght
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: aligmentStrenght
-      value: 0.181
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: cohesionStrenght
-      value: 0.198
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: startVelocity.z
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: reaccelerationForce
-      value: 0.19
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: maxRadious
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: maxVelocity
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa1a4dafb8c005744b28ee10c905f148, type: 3}
 --- !u!1001 &800644230
@@ -1148,7 +883,7 @@ PrefabInstance:
     - target: {fileID: 3192901241293007514, guid: aa1a4dafb8c005744b28ee10c905f148,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.18
+      value: -8.68
       objectReference: {fileID: 0}
     - target: {fileID: 3192901241293007514, guid: aa1a4dafb8c005744b28ee10c905f148,
         type: 3}
@@ -1189,36 +924,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: separationStrenght
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: aligmentStrenght
-      value: 0.181
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: cohesionStrenght
-      value: 0.198
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: reaccelerationForce
-      value: 0.19
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: maxRadious
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: maxVelocity
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa1a4dafb8c005744b28ee10c905f148, type: 3}
@@ -1288,41 +993,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: separationStrenght
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: aligmentStrenght
-      value: 0.181
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: cohesionStrenght
-      value: 0.198
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: startVelocity.z
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: reaccelerationForce
-      value: 0.19
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: maxRadious
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: maxVelocity
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa1a4dafb8c005744b28ee10c905f148, type: 3}
@@ -1434,7 +1104,7 @@ PrefabInstance:
     - target: {fileID: 3192901241293007514, guid: aa1a4dafb8c005744b28ee10c905f148,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.72
+      value: -7.22
       objectReference: {fileID: 0}
     - target: {fileID: 3192901241293007514, guid: aa1a4dafb8c005744b28ee10c905f148,
         type: 3}
@@ -1475,36 +1145,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: separationStrenght
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: aligmentStrenght
-      value: 0.181
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: cohesionStrenght
-      value: 0.198
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: reaccelerationForce
-      value: 0.19
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: maxRadious
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: maxVelocity
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa1a4dafb8c005744b28ee10c905f148, type: 3}
@@ -1575,41 +1215,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: separationStrenght
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: aligmentStrenght
-      value: 0.181
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: cohesionStrenght
-      value: 0.198
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: startVelocity.z
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: reaccelerationForce
-      value: 0.19
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: maxRadious
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: maxVelocity
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa1a4dafb8c005744b28ee10c905f148, type: 3}
 --- !u!1001 &1117497505
@@ -1678,41 +1283,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: separationStrenght
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: aligmentStrenght
-      value: 0.181
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: cohesionStrenght
-      value: 0.198
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: startVelocity.z
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: reaccelerationForce
-      value: 0.19
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: maxRadious
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: maxVelocity
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa1a4dafb8c005744b28ee10c905f148, type: 3}
@@ -1783,36 +1353,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: aligmentStrenght
-      value: 0.181
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: cohesionStrenght
-      value: 0.198
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: startVelocity.z
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: reaccelerationForce
-      value: 0.19
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: maxRadious
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: maxVelocity
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa1a4dafb8c005744b28ee10c905f148, type: 3}
 --- !u!1001 &1709599029
@@ -1881,36 +1421,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: aligmentStrenght
-      value: 0.181
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: cohesionStrenght
-      value: 0.198
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: startVelocity.z
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: reaccelerationForce
-      value: 0.19
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: maxRadious
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: maxVelocity
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa1a4dafb8c005744b28ee10c905f148, type: 3}
@@ -1981,41 +1491,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: separationStrenght
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: aligmentStrenght
-      value: 0.181
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: cohesionStrenght
-      value: 0.198
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: startVelocity.z
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: reaccelerationForce
-      value: 0.19
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: maxRadious
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: maxVelocity
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa1a4dafb8c005744b28ee10c905f148, type: 3}
 --- !u!1001 &1892635463
@@ -2084,36 +1559,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: aligmentStrenght
-      value: 0.181
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: cohesionStrenght
-      value: 0.198
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: startVelocity.z
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: reaccelerationForce
-      value: 0.19
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: maxRadious
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: maxVelocity
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa1a4dafb8c005744b28ee10c905f148, type: 3}
@@ -2184,41 +1629,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: aligmentStrenght
-      value: 0.181
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: cohesionStrenght
-      value: 0.198
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: randomStartingVelocity
-      value: 0.273
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: startVelocity.z
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: reaccelerationForce
-      value: 0.19
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: maxRadious
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: maxVelocity
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa1a4dafb8c005744b28ee10c905f148, type: 3}
 --- !u!1001 &2060432107
@@ -2288,41 +1698,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: separationStrenght
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: aligmentStrenght
-      value: 0.181
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: cohesionStrenght
-      value: 0.198
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: startVelocity.z
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: reaccelerationForce
-      value: 0.19
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: maxRadious
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
-        type: 3}
-      propertyPath: maxVelocity
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa1a4dafb8c005744b28ee10c905f148, type: 3}
 --- !u!1001 &3192901241195758384
@@ -2350,7 +1725,7 @@ PrefabInstance:
     - target: {fileID: 3192901241293007514, guid: aa1a4dafb8c005744b28ee10c905f148,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -6.5
       objectReference: {fileID: 0}
     - target: {fileID: 3192901241293007514, guid: aa1a4dafb8c005744b28ee10c905f148,
         type: 3}
@@ -2394,8 +1769,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3192901241293007513, guid: aa1a4dafb8c005744b28ee10c905f148,
         type: 3}
-      propertyPath: maxVelocity
-      value: 5
+      propertyPath: observe
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa1a4dafb8c005744b28ee10c905f148, type: 3}
