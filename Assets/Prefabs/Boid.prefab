@@ -45,16 +45,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cca6cadb4ae22b438e505c4c799167f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startVelocity: {x: 0, y: 0, z: 0.5}
-  randomStartingVelocity: 0.273
-  maxVelocity: 5
+  startVelocity: {x: 0, y: 0, z: 0.1}
+  randomStartingVelocity: 0.565
+  maxVelocity: 7
   maxAcceleration: 1
-  maxRadious: 4
-  angleThreshold: 100
-  aligmentStrenght: 0.164
-  separationStrenght: 5
-  cohesionStrenght: 0.202
-  reaccelerationForce: 0.3
+  maxRadious: 5
+  angleThreshold: 180
+  aligmentStrenght: 1
+  separationStrenght: 1
+  cohesionStrenght: 1
+  reaccelerationForce: 0.1
   observe: 0
 --- !u!135 &3192901241293007512
 SphereCollider:

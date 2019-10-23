@@ -5,6 +5,7 @@ using System.Linq;
 
 public class BoidController : MonoBehaviour
 {
+    private Vector3 direction; // for reading only
     private Vector3 velocity;
     private Vector3 acceleration;
     public Vector3 startVelocity;
@@ -17,41 +18,63 @@ public class BoidController : MonoBehaviour
     public float maxRadious;
     [Range(0f, 180f)]
     public float angleThreshold = 90f;
-    [Range(0f, 5f)]
-    public float aligmentStrenght = .1f;
-    [Range(0f, 5f)]
-    public float separationStrenght = .5f;
-    [Range(0f, 5f)]
-    public float cohesionStrenght = 1f;
+    // [Range(0f, 5f)]
+    // public float aligmentStrenght = .1f;
+    // [Range(0f, 5f)]
+    // public float separationStrenght = .5f;
+    // [Range(0f, 5f)]
+    // public float cohesionStrenght = 1f;
     [Range(0f, 5f)]
     public float reaccelerationForce = 1f;
     public bool observe = false;
     private void Start()
     {
         velocity = startVelocity + new Vector3(Random.Range(-randomStartingVelocity, randomStartingVelocity), Random.Range(-randomStartingVelocity, randomStartingVelocity), Random.Range(-randomStartingVelocity, randomStartingVelocity));
+        direction = velocity.normalized;
     }
 
     private void FixedUpdate()
     {
         AdvanceSimulation();
+        ApplyBounds();
+    }
+
+    private void ApplyBounds()
+    {
+        Vector3 pos = transform.position;
+        Vector3 newPos = pos;
+        Vector3 bound = MasterController.Instance.bounds;
+        if (pos.x > bound.x) newPos.x = -bound.x;
+        if (pos.x < -bound.x) newPos.x = bound.x;
+        if (pos.y > bound.y) newPos.y = -bound.y;
+        if (pos.y < -bound.y) newPos.y = bound.y;
+        if (pos.z > bound.z) newPos.z = -bound.z;
+        if (pos.z < -bound.z) newPos.z = bound.z;
+        transform.position = newPos;
     }
 
     public void AdvanceSimulation()
     {
         List<BoidController> boids = getNerbyBoids();
-
-        ApplySeparation(boids);
-        ApplyAligment(boids);
-        ApplyCohesion(boids);
+        if (MasterController.Instance.separation)
+            ApplySeparation(boids);
+        if (MasterController.Instance.aligment)
+            ApplyAligment(boids);
+        if (MasterController.Instance.cohesion)
+            ApplyCohesion(boids);
 
         ApplyVectors();
-
+        if (observe)
+        {
+            DrawDebugs();
+        }
         transform.rotation = Quaternion.LookRotation(velocity, Vector3.up);
         acceleration = velocity.normalized * reaccelerationForce;
     }
 
     private void ApplyVectors()
     {
+
         acceleration = Vector3.ClampMagnitude(acceleration, maxAcceleration);
         velocity += acceleration * Time.fixedDeltaTime;
         velocity = Vector3.ClampMagnitude(velocity, maxVelocity);
@@ -71,48 +94,64 @@ public class BoidController : MonoBehaviour
     {
         if (boids.Count == 0) return;
         Vector3 averageForce = Vector3.zero;
+        int count = 0;
         foreach (var boid in boids)
         {
-            if (Vector3.Angle(this.velocity, boid.velocity) < angleThreshold)
+            if (isSeeing(boid))
             {
-                Vector3 direction = (transform.position - boid.transform.position).normalized;
-                float distance = (transform.position - boid.transform.position).magnitude;
-                float bias = Mathf.Lerp(maxRadious, 0, distance * distance);
-                averageForce += direction * bias;
+                Vector3 diff = transform.position - boid.transform.position;
+                float dist = diff.magnitude + 0.01f;
+                diff /= dist;
+                averageForce += diff;
+                count++;
             }
         }
-        averageForce /= boids.Count;
-        this.acceleration += averageForce * separationStrenght;// * 10;
+        if (count != 0)
+            averageForce /= count;
+        averageForce = averageForce.normalized * maxVelocity;
+        this.acceleration += averageForce * MasterController.Instance.separationStrenght;// * 10;
     }
 
     public void ApplyAligment(List<BoidController> boids)
     {
         if (boids.Count == 0) return;
-        Vector3 average = Vector3.zero;
+        Vector3 averageVelocity = Vector3.zero;
+        int count = 0;
         foreach (var boid in boids)
         {
-            if (Vector3.Angle(this.velocity, boid.velocity) < angleThreshold)
+            if (isSeeing(boid))
             {
-                average += boid.Velocity;
+                averageVelocity += boid.velocity;
+                count++;
             }
         }
-        average /= boids.Count;
-        this.acceleration += (average - this.velocity) * aligmentStrenght;
+        if (count != 0)
+            averageVelocity /= count;
+        averageVelocity = averageVelocity.normalized * maxVelocity;
+        this.acceleration += (averageVelocity - velocity) * MasterController.Instance.aligmentStrenght;
     }
 
     public void ApplyCohesion(List<BoidController> boids)
     {
         if (boids.Count == 0) return;
         Vector3 averagePosition = Vector3.zero;
+        int count = 0;
         foreach (var boid in boids)
         {
-            if (Vector3.Angle(this.velocity, boid.velocity) < angleThreshold)
+            if (isSeeing(boid))
             {
                 averagePosition += boid.transform.position;
+                count++;
             }
         }
-        averagePosition /= boids.Count;
-        this.acceleration += (averagePosition - transform.position) * cohesionStrenght;
+        if (count != 0)
+            averagePosition /= count;
+        this.acceleration += (averagePosition - transform.position) * MasterController.Instance.cohesionStrenght;
+    }
+
+    public bool isSeeing(BoidController otherBoid)
+    {
+        return Vector3.Angle(velocity, otherBoid.transform.position - transform.position) < angleThreshold;
     }
 
     public void DrawDebugs()
@@ -125,8 +164,7 @@ public class BoidController : MonoBehaviour
     {
         if (observe)
         {
-            DrawDebugs();
-            Gizmos.DrawWireSphere(transform.position, maxRadious);
+            //Gizmos.DrawWireSphere(transform.position, maxRadious);
         }
     }
 }
