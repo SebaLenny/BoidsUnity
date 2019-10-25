@@ -5,7 +5,6 @@ using System.Linq;
 
 public class BoidController : MonoBehaviour
 {
-    private Vector3 direction; // for reading only
     private Vector3 velocity;
     private Vector3 acceleration;
     public Vector3 startVelocity;
@@ -16,27 +15,32 @@ public class BoidController : MonoBehaviour
     public float maxVelocity = 5;
     public float maxAcceleration = 1;
     public float maxRadious;
-    [Range(0f, 180f)]
-    public float angleThreshold = 90f;
+    // [Range(0f, 180f)]
+    // public float angleThreshold = 90f;
     // [Range(0f, 5f)]
     // public float aligmentStrenght = .1f;
     // [Range(0f, 5f)]
     // public float separationStrenght = .5f;
     // [Range(0f, 5f)]
     // public float cohesionStrenght = 1f;
-    [Range(0f, 5f)]
-    public float reaccelerationForce = 1f;
+    // [Range(0f, 5f)]
+    // public float reaccelerationForce = 1f;
     public bool observe = false;
     private void Start()
     {
         velocity = startVelocity + new Vector3(Random.Range(-randomStartingVelocity, randomStartingVelocity), Random.Range(-randomStartingVelocity, randomStartingVelocity), Random.Range(-randomStartingVelocity, randomStartingVelocity));
-        direction = velocity.normalized;
     }
 
     private void FixedUpdate()
     {
-        AdvanceSimulation();
         ApplyBounds();
+        acceleration += GetForces();
+        ApplyVectors();
+        transform.rotation = Quaternion.LookRotation(velocity, Vector3.up);
+        if (observe)
+        {
+            DrawDebugs();
+        }
     }
 
     private void ApplyBounds()
@@ -53,35 +57,30 @@ public class BoidController : MonoBehaviour
         transform.position = newPos;
     }
 
-    public void AdvanceSimulation()
+    public Vector3 GetForces()
     {
-        List<BoidController> boids = getNerbyBoids();
+        List<BoidController> boids = GetNerbyBoids();
+        Vector3 force = Vector3.zero;
         if (MasterController.Instance.separation)
-            ApplySeparation(boids);
+            force += ApplySeparation(boids) * MasterController.Instance.separationStrenght;
         if (MasterController.Instance.aligment)
-            ApplyAligment(boids);
+            force += ApplyAligment(boids) * MasterController.Instance.aligmentStrenght;
         if (MasterController.Instance.cohesion)
-            ApplyCohesion(boids);
-
-        ApplyVectors();
-        if (observe)
-        {
-            DrawDebugs();
-        }
-        transform.rotation = Quaternion.LookRotation(velocity, Vector3.up);
-        acceleration = velocity.normalized * reaccelerationForce;
+            force += ApplyCohesion(boids) * MasterController.Instance.cohesionStrenght;
+        if (MasterController.Instance.collision)
+            force += ApplyCollisiton() * MasterController.Instance.collisionStrenght;
+        return force;
     }
 
     private void ApplyVectors()
     {
-
         acceleration = Vector3.ClampMagnitude(acceleration, maxAcceleration);
         velocity += acceleration * Time.fixedDeltaTime;
         velocity = Vector3.ClampMagnitude(velocity, maxVelocity);
         transform.position += velocity * Time.fixedDeltaTime;
     }
 
-    private List<BoidController> getNerbyBoids()
+    private List<BoidController> GetNerbyBoids()
     {
         List<BoidController> boids = Physics.OverlapSphere(transform.position, maxRadious, 1 << LayerMask.NameToLayer("Boids"))
         .Select(c => c.GetComponent<BoidController>())
@@ -90,9 +89,9 @@ public class BoidController : MonoBehaviour
         return boids;
     }
 
-    public void ApplySeparation(List<BoidController> boids)
+    public Vector3 ApplySeparation(List<BoidController> boids)
     {
-        if (boids.Count == 0) return;
+        if (boids.Count == 0) return Vector3.zero;
         Vector3 averageForce = Vector3.zero;
         int count = 0;
         foreach (var boid in boids)
@@ -100,21 +99,19 @@ public class BoidController : MonoBehaviour
             if (isSeeing(boid))
             {
                 Vector3 diff = transform.position - boid.transform.position;
-                float dist = diff.magnitude + 0.01f;
-                diff /= dist;
-                averageForce += diff;
+                float dist = 2 / (Mathf.Pow(diff.magnitude, 2) + 0.00001f);
+                averageForce += diff * dist;
                 count++;
             }
         }
         if (count != 0)
             averageForce /= count;
-        averageForce = averageForce.normalized * maxVelocity;
-        this.acceleration += averageForce * MasterController.Instance.separationStrenght;// * 10;
+        return averageForce;
     }
 
-    public void ApplyAligment(List<BoidController> boids)
+    public Vector3 ApplyAligment(List<BoidController> boids)
     {
-        if (boids.Count == 0) return;
+        if (boids.Count == 0) return Vector3.zero;
         Vector3 averageVelocity = Vector3.zero;
         int count = 0;
         foreach (var boid in boids)
@@ -127,13 +124,12 @@ public class BoidController : MonoBehaviour
         }
         if (count != 0)
             averageVelocity /= count;
-        averageVelocity = averageVelocity.normalized * maxVelocity;
-        this.acceleration += (averageVelocity - velocity) * MasterController.Instance.aligmentStrenght;
+        return averageVelocity - velocity;
     }
 
-    public void ApplyCohesion(List<BoidController> boids)
+    public Vector3 ApplyCohesion(List<BoidController> boids)
     {
-        if (boids.Count == 0) return;
+        if (boids.Count == 0) return Vector3.zero;
         Vector3 averagePosition = Vector3.zero;
         int count = 0;
         foreach (var boid in boids)
@@ -146,17 +142,57 @@ public class BoidController : MonoBehaviour
         }
         if (count != 0)
             averagePosition /= count;
-        this.acceleration += (averagePosition - transform.position) * MasterController.Instance.cohesionStrenght;
+        return averagePosition - transform.position;
+    }
+
+    private Vector3 ApplyCollisiton()
+    {
+        Quaternion rotation = Quaternion.LookRotation(velocity, Vector3.up);
+        Vector3 force = Vector3.zero;
+        int hits = 0;
+        foreach (var point in MasterController.Instance.PointsOnSphere)
+        {
+            Vector3 rotatedPoint = rotation * point * maxRadious;
+            if (isSeeing(rotatedPoint))
+            {
+                RaycastHit hit;
+                if (Physics.Raycast(transform.position, rotatedPoint, out hit, maxRadious, 1 << LayerMask.NameToLayer("Obstacles")))
+                {
+                    float magnitude = 1 / (hit.distance + 0.01f);
+                    force -= rotatedPoint * magnitude;
+                    hits += 1;
+                    if (observe)
+                    {
+                        Debug.DrawLine(transform.position, hit.point, new Color(1, 1, 0, .2f));
+                    }
+                }
+            }
+        }
+        if (hits == 0)
+        {
+            return Vector3.zero;
+        }
+        else
+        {
+            return force / hits;
+        }
+
     }
 
     public bool isSeeing(BoidController otherBoid)
     {
-        return Vector3.Angle(velocity, otherBoid.transform.position - transform.position) < angleThreshold;
+        return Vector3.Angle(velocity, otherBoid.transform.position - transform.position) < MasterController.Instance.angleThreshold;
     }
+
+    public bool isSeeing(Vector3 point)
+    {
+        return Vector3.Angle(velocity, point - transform.position) < MasterController.Instance.angleThreshold;
+    }
+
 
     public void DrawDebugs()
     {
-        Debug.DrawLine(transform.position, transform.position + velocity, Color.red, 0f);
+        Debug.DrawLine(transform.position, transform.position + velocity, new Color(1, 0, 0, .2f), 0f);
         Debug.DrawLine(transform.position, transform.position + acceleration, Color.green, 0f);
     }
 
