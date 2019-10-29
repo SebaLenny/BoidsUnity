@@ -23,6 +23,10 @@ public class MasterController : Singleton<MasterController>
     public bool collision;
     [Range(0f, 5f)]
     public float collisionStrenght = 1;
+    public bool chaseTarget = false;
+    [Range(0f, 5f)]
+    public float targetStrenght = 1;
+    public GameObject target;
     public int samplePointsCount = 100;
     private static List<Vector3> pointsOnSphere;
     public List<Vector3> PointsOnSphere { get { return pointsOnSphere; } }

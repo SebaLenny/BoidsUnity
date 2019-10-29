@@ -69,6 +69,8 @@ public class BoidController : MonoBehaviour
             force += ApplyCohesion(boids) * MasterController.Instance.cohesionStrenght;
         if (MasterController.Instance.collision)
             force += ApplyCollisiton() * MasterController.Instance.collisionStrenght;
+        if (MasterController.Instance.chaseTarget && MasterController.Instance.target != null)
+            force += ApplyChase() * MasterController.Instance.targetStrenght;
         return force;
     }
 
@@ -124,7 +126,7 @@ public class BoidController : MonoBehaviour
         }
         if (count != 0)
             averageVelocity /= count;
-        return averageVelocity - velocity;
+        return averageVelocity;
     }
 
     public Vector3 ApplyCohesion(List<BoidController> boids)
@@ -147,23 +149,31 @@ public class BoidController : MonoBehaviour
 
     private Vector3 ApplyCollisiton()
     {
-        Quaternion rotation = Quaternion.LookRotation(velocity, Vector3.up);
+        Quaternion rotation =
+        Quaternion.FromToRotation(transform.position, velocity);
         Vector3 force = Vector3.zero;
         int hits = 0;
         foreach (var point in MasterController.Instance.PointsOnSphere)
         {
-            Vector3 rotatedPoint = rotation * point * maxRadious;
-            if (isSeeing(rotatedPoint))
+            Vector3 rotatedPoint = (rotation * point) * maxRadious;
+            if (isSeeing(transform.position + rotatedPoint))
             {
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position, rotatedPoint, out hit, maxRadious, 1 << LayerMask.NameToLayer("Obstacles")))
                 {
-                    float magnitude = 1 / (hit.distance + 0.01f);
+                    float magnitude = 2 / (hit.distance + 0.01f);
                     force -= rotatedPoint * magnitude;
                     hits += 1;
                     if (observe)
                     {
                         Debug.DrawLine(transform.position, hit.point, new Color(1, 1, 0, .2f));
+                    }
+                }
+                else
+                {
+                    if (observe)
+                    {
+                        Debug.DrawRay(transform.position, rotatedPoint, new Color(1, 0, 1, .1f));
                     }
                 }
             }
@@ -174,9 +184,14 @@ public class BoidController : MonoBehaviour
         }
         else
         {
-            return force / hits;
+            return force;
         }
 
+    }
+
+    private Vector3 ApplyChase()
+    {
+        return (MasterController.Instance.target.transform.position - transform.position).normalized;
     }
 
     public bool isSeeing(BoidController otherBoid)
