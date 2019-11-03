@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+[RequireComponent(typeof(Rigidbody))]
 public class BoidController : MonoBehaviour
 {
-    private Vector3 velocity;
-    private Vector3 acceleration;
+    private Rigidbody rb;
+    private Vector3 accelerationToApply;
     public Vector3 startVelocity;
     [Range(0f, 1f)]
     public float randomStartingVelocity = 0f;
-    public Vector3 Velocity { get { return velocity; } set { velocity = value; } }
-    public Vector3 Acceleration { get { return acceleration; } set { velocity = value; } }
     public float maxVelocity = 5;
     public float maxAcceleration = 1;
     public float maxRadious;
@@ -26,17 +25,22 @@ public class BoidController : MonoBehaviour
     // [Range(0f, 5f)]
     // public float reaccelerationForce = 1f;
     public bool observe = false;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
     private void Start()
     {
-        velocity = startVelocity + new Vector3(Random.Range(-randomStartingVelocity, randomStartingVelocity), Random.Range(-randomStartingVelocity, randomStartingVelocity), Random.Range(-randomStartingVelocity, randomStartingVelocity));
+        rb.velocity = startVelocity + new Vector3(Random.Range(-randomStartingVelocity, randomStartingVelocity), Random.Range(-randomStartingVelocity, randomStartingVelocity), Random.Range(-randomStartingVelocity, randomStartingVelocity));
     }
 
     private void FixedUpdate()
     {
         ApplyBounds();
-        acceleration += GetForces();
+        accelerationToApply += GetForces();
         ApplyVectors();
-        transform.rotation = Quaternion.LookRotation(velocity, Vector3.up);
+        transform.rotation = Quaternion.LookRotation(rb.velocity, Vector3.up);
         if (observe)
         {
             DrawDebugs();
@@ -76,10 +80,10 @@ public class BoidController : MonoBehaviour
 
     private void ApplyVectors()
     {
-        acceleration = Vector3.ClampMagnitude(acceleration, maxAcceleration);
-        velocity += acceleration * Time.fixedDeltaTime;
-        velocity = Vector3.ClampMagnitude(velocity, maxVelocity);
-        transform.position += velocity * Time.fixedDeltaTime;
+        accelerationToApply = Vector3.ClampMagnitude(accelerationToApply, maxAcceleration);
+        rb.velocity += accelerationToApply * Time.fixedDeltaTime;
+        rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxVelocity);
+        //transform.position += rb.velocity * Time.fixedDeltaTime;
     }
 
     private List<BoidController> GetNerbyBoids()
@@ -120,7 +124,7 @@ public class BoidController : MonoBehaviour
         {
             if (isSeeing(boid))
             {
-                averageVelocity += boid.velocity;
+                averageVelocity += boid.rb.velocity;
                 count++;
             }
         }
@@ -150,7 +154,7 @@ public class BoidController : MonoBehaviour
     private Vector3 ApplyCollisiton()
     {
         Quaternion rotation =
-        Quaternion.FromToRotation(transform.position, velocity);
+        Quaternion.FromToRotation(transform.position, rb.velocity);
         Vector3 force = Vector3.zero;
         int hits = 0;
         foreach (var point in MasterController.Instance.PointsOnSphere)
@@ -196,19 +200,19 @@ public class BoidController : MonoBehaviour
 
     public bool isSeeing(BoidController otherBoid)
     {
-        return Vector3.Angle(velocity, otherBoid.transform.position - transform.position) < MasterController.Instance.angleThreshold;
+        return Vector3.Angle(rb.velocity, otherBoid.transform.position - transform.position) < MasterController.Instance.angleThreshold;
     }
 
     public bool isSeeing(Vector3 point)
     {
-        return Vector3.Angle(velocity, point - transform.position) < MasterController.Instance.angleThreshold;
+        return Vector3.Angle(rb.velocity, point - transform.position) < MasterController.Instance.angleThreshold;
     }
 
 
     public void DrawDebugs()
     {
-        Debug.DrawLine(transform.position, transform.position + velocity, new Color(1, 0, 0, .2f), 0f);
-        Debug.DrawLine(transform.position, transform.position + acceleration, Color.green, 0f);
+        Debug.DrawLine(transform.position, transform.position + rb.velocity, new Color(1, 0, 0, .2f), 0f);
+        Debug.DrawLine(transform.position, transform.position + accelerationToApply, Color.green, 0f);
     }
 
     private void OnDrawGizmos()
