@@ -48,9 +48,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startVelocity: {x: 0, y: 0, z: 0}
   randomStartingVelocity: 1
-  maxVelocity: 7
-  maxAcceleration: 10
-  maxRadious: 5
+  ruleSet:
+    boidsCount: 10
+    maxVelocity: 5
+    maxAcceleration: 1
+    seeAngle: 180
+    aligment:
+      isActive: 1
+      considerOtherGroups: 0
+      range: 8
+      strenght: 1
+    separation:
+      isActive: 1
+      considerOtherGroups: 0
+      range: 3
+      strenght: 2
+    cohesion:
+      isActive: 1
+      considerOtherGroups: 0
+      range: 5
+      strenght: 1
+    collisionAvoidance:
+      isActive: 0
+      considerOtherGroups: 0
+      range: 2
+      strenght: 1
+    targetChasing:
+      isActive: 0
+      considerOtherGroups: 0
+      range: 2
+      strenght: 1
   observe: 0
 --- !u!135 &3192901241293007512
 SphereCollider:

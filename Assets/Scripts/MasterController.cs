@@ -6,28 +6,9 @@ using System;
 
 public class MasterController : Singleton<MasterController>
 {
+    public List<RuleSet> rules;
     public Vector3 bounds;
-    [Range(0f, 5f)]
-    public float reaccelerationForce = 1f;
-    [Range(0f, 180f)]
-    public float angleThreshold = 90f;
-    public bool aligment;
-    [Range(0f, 5f)]
-    public float aligmentStrenght = 1;
-    public bool separation;
-    [Range(0f, 5f)]
-    public float separationStrenght = 1;
-    public bool cohesion;
-    [Range(0f, 5f)]
-    public float cohesionStrenght = 1;
-    public bool collision;
-    [Range(0f, 5f)]
-    public float collisionStrenght = 1;
-    public bool chaseTarget = false;
-    [Range(0f, 5f)]
-    public float targetStrenght = 1;
-    public GameObject target;
-    public int samplePointsCount = 100;
+    private int samplePointsCount = 100;
     private static List<Vector3> pointsOnSphere;
     public List<Vector3> PointsOnSphere { get { return pointsOnSphere; } }
 
@@ -35,14 +16,6 @@ public class MasterController : Singleton<MasterController>
     {
         base.Awake();
         GeneratePoints();
-    }
-
-    private void Update()
-    {
-        // foreach (var point in pointsOnSphere)
-        // {
-        //     Debug.DrawLine(Vector3.zero, point);
-        // }
     }
 
     /// Reference https://stackoverflow.com/a/44164075

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 [RequireComponent(typeof(Rigidbody))]
 public class BoidController : MonoBehaviour
@@ -11,19 +12,8 @@ public class BoidController : MonoBehaviour
     public Vector3 startVelocity;
     [Range(0f, 1f)]
     public float randomStartingVelocity = 0f;
-    public float maxVelocity = 5;
-    public float maxAcceleration = 1;
-    public float maxRadious;
-    // [Range(0f, 180f)]
-    // public float angleThreshold = 90f;
-    // [Range(0f, 5f)]
-    // public float aligmentStrenght = .1f;
-    // [Range(0f, 5f)]
-    // public float separationStrenght = .5f;
-    // [Range(0f, 5f)]
-    // public float cohesionStrenght = 1f;
-    // [Range(0f, 5f)]
-    // public float reaccelerationForce = 1f;
+    public RuleSet ruleSet;
+
     public bool observe = false;
 
     private void Awake()
@@ -32,7 +22,7 @@ public class BoidController : MonoBehaviour
     }
     private void Start()
     {
-        rb.velocity = startVelocity + new Vector3(Random.Range(-randomStartingVelocity, randomStartingVelocity), Random.Range(-randomStartingVelocity, randomStartingVelocity), Random.Range(-randomStartingVelocity, randomStartingVelocity));
+        rb.velocity = startVelocity + new Vector3(UnityEngine.Random.Range(-randomStartingVelocity, randomStartingVelocity), UnityEngine.Random.Range(-randomStartingVelocity, randomStartingVelocity), UnityEngine.Random.Range(-randomStartingVelocity, randomStartingVelocity));
     }
 
     private void FixedUpdate()
@@ -65,34 +55,39 @@ public class BoidController : MonoBehaviour
     {
         List<BoidController> boids = GetNerbyBoids();
         Vector3 force = Vector3.zero;
-        if (MasterController.Instance.separation)
-            force += ApplySeparation(boids) * MasterController.Instance.separationStrenght;
-        if (MasterController.Instance.aligment)
-            force += ApplyAligment(boids) * MasterController.Instance.aligmentStrenght;
-        if (MasterController.Instance.cohesion)
-            force += ApplyCohesion(boids) * MasterController.Instance.cohesionStrenght;
-        if (MasterController.Instance.collision)
-            force += ApplyCollisiton() * MasterController.Instance.collisionStrenght;
-        if (MasterController.Instance.chaseTarget && MasterController.Instance.target != null)
-            force += ApplyChase() * MasterController.Instance.targetStrenght;
+        if (ruleSet.separation.isActive)
+            force += ApplySeparation(boids.Where(b => Vector3.Distance(transform.position, b.transform.position) < ruleSet.separation.range).ToList()) * ruleSet.separation.strenght; // might be slow
+        if (ruleSet.aligment.isActive)
+            force += ApplyAligment(boids.Where(b => Vector3.Distance(transform.position, b.transform.position) < ruleSet.aligment.range).ToList()) * ruleSet.aligment.strenght; // might be slow
+        if (ruleSet.cohesion.isActive)
+            force += ApplyCohesion(boids.Where(b => Vector3.Distance(transform.position, b.transform.position) < ruleSet.cohesion.range).ToList()) * ruleSet.cohesion.strenght; // might be slow
+        if (ruleSet.collisionAvoidance.isActive)
+            force += ApplyCollisiton() * ruleSet.collisionAvoidance.strenght;
+        if (ruleSet.targetChasing.isActive)
+            force += ApplyChase() * ruleSet.targetChasing.strenght;
         return force;
     }
 
     private void ApplyVectors()
     {
-        accelerationToApply = Vector3.ClampMagnitude(accelerationToApply, maxAcceleration);
-        rb.velocity += accelerationToApply * Time.fixedDeltaTime;
-        rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxVelocity);
+        accelerationToApply = Vector3.ClampMagnitude(accelerationToApply, ruleSet.maxAcceleration);
+        rb.AddForce(accelerationToApply);
+        rb.velocity = Vector3.ClampMagnitude(rb.velocity, ruleSet.maxVelocity);
         //transform.position += rb.velocity * Time.fixedDeltaTime;
     }
 
     private List<BoidController> GetNerbyBoids()
     {
-        List<BoidController> boids = Physics.OverlapSphere(transform.position, maxRadious, 1 << LayerMask.NameToLayer("Boids"))
+        List<BoidController> boids = Physics.OverlapSphere(transform.position, getMaxRadious(), 1 << LayerMask.NameToLayer("Boids"))
         .Select(c => c.GetComponent<BoidController>())
         .Where(c => c != null).ToList(); // use non aloc and try to settle for masks for boids separately
         boids.Remove(this);
         return boids;
+    }
+
+    private float getMaxRadious()
+    {
+        return Mathf.Max(Mathf.Max(Mathf.Max(Mathf.Max(ruleSet.targetChasing.range, ruleSet.collisionAvoidance.range), ruleSet.separation.range), ruleSet.cohesion.range), ruleSet.aligment.range);
     }
 
     public Vector3 ApplySeparation(List<BoidController> boids)
@@ -159,11 +154,11 @@ public class BoidController : MonoBehaviour
         int hits = 0;
         foreach (var point in MasterController.Instance.PointsOnSphere)
         {
-            Vector3 rotatedPoint = (rotation * point) * maxRadious;
+            Vector3 rotatedPoint = (rotation * point) * ruleSet.collisionAvoidance.range;
             if (isSeeing(transform.position + rotatedPoint))
             {
                 RaycastHit hit;
-                if (Physics.Raycast(transform.position, rotatedPoint, out hit, maxRadious, 1 << LayerMask.NameToLayer("Obstacles")))
+                if (Physics.Raycast(transform.position, rotatedPoint, out hit, ruleSet.collisionAvoidance.range, 1 << LayerMask.NameToLayer("Obstacles")))
                 {
                     float magnitude = 2 / (hit.distance + 0.01f);
                     force -= rotatedPoint * magnitude;
@@ -190,22 +185,21 @@ public class BoidController : MonoBehaviour
         {
             return force;
         }
-
     }
 
     private Vector3 ApplyChase()
     {
-        return (MasterController.Instance.target.transform.position - transform.position).normalized;
+        throw new NotImplementedException();
     }
 
     public bool isSeeing(BoidController otherBoid)
     {
-        return Vector3.Angle(rb.velocity, otherBoid.transform.position - transform.position) < MasterController.Instance.angleThreshold;
+        return Vector3.Angle(rb.velocity, otherBoid.transform.position - transform.position) < ruleSet.seeAngle;
     }
 
     public bool isSeeing(Vector3 point)
     {
-        return Vector3.Angle(rb.velocity, point - transform.position) < MasterController.Instance.angleThreshold;
+        return Vector3.Angle(rb.velocity, point - transform.position) < ruleSet.seeAngle;
     }
 
 
