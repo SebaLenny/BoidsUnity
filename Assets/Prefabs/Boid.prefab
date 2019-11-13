@@ -49,9 +49,10 @@ MonoBehaviour:
   startVelocity: {x: 0, y: 0, z: 0}
   randomStartingVelocity: 1
   ruleSet:
+    spawnPoint: {fileID: 0}
     boidsCount: 10
     maxVelocity: 5
-    maxAcceleration: 1
+    maxAcceleration: 3
     seeAngle: 180
     aligment:
       isActive: 1
@@ -69,10 +70,10 @@ MonoBehaviour:
       range: 5
       strenght: 1
     collisionAvoidance:
-      isActive: 0
+      isActive: 1
       considerOtherGroups: 0
-      range: 2
-      strenght: 1
+      range: 5
+      strenght: 10
     targetChasing:
       isActive: 0
       considerOtherGroups: 0

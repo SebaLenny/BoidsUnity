@@ -93,6 +93,10 @@ public class BoidController : MonoBehaviour
     public Vector3 ApplySeparation(List<BoidController> boids)
     {
         if (boids.Count == 0) return Vector3.zero;
+        if (!ruleSet.separation.considerOtherGroups)
+        {
+            boids = boids.Where(b => b.ruleSet == ruleSet).ToList();
+        }
         Vector3 averageForce = Vector3.zero;
         int count = 0;
         foreach (var boid in boids)
@@ -113,6 +117,10 @@ public class BoidController : MonoBehaviour
     public Vector3 ApplyAligment(List<BoidController> boids)
     {
         if (boids.Count == 0) return Vector3.zero;
+        if (!ruleSet.aligment.considerOtherGroups)
+        {
+            boids = boids.Where(b => b.ruleSet == ruleSet).ToList();
+        }
         Vector3 averageVelocity = Vector3.zero;
         int count = 0;
         foreach (var boid in boids)
@@ -130,6 +138,10 @@ public class BoidController : MonoBehaviour
 
     public Vector3 ApplyCohesion(List<BoidController> boids)
     {
+        if (!ruleSet.cohesion.considerOtherGroups)
+        {
+            boids = boids.Where(b => b.ruleSet == ruleSet).ToList();
+        }
         if (boids.Count == 0) return Vector3.zero;
         Vector3 averagePosition = Vector3.zero;
         int count = 0;
