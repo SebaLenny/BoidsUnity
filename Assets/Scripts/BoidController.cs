@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using System;
 
 [RequireComponent(typeof(Rigidbody))]
 public class BoidController : MonoBehaviour
@@ -13,7 +11,7 @@ public class BoidController : MonoBehaviour
     [Range(0f, 1f)]
     public float randomStartingVelocity = 0f;
     public RuleSet ruleSet;
-
+    public GameObject currentTarget;
     public bool observe = false;
 
     private void Awake()
@@ -63,7 +61,7 @@ public class BoidController : MonoBehaviour
             force += ApplyCohesion(boids.Where(b => Vector3.Distance(transform.position, b.transform.position) < ruleSet.cohesion.range).ToList()) * ruleSet.cohesion.strenght; // might be slow
         if (ruleSet.collisionAvoidance.isActive)
             force += ApplyCollisiton() * ruleSet.collisionAvoidance.strenght;
-        if (ruleSet.targetChasing.isActive)
+        if (ruleSet.targetChasing.isActive && currentTarget != null)
             force += ApplyChase() * ruleSet.targetChasing.strenght;
         return force;
     }
@@ -201,7 +199,7 @@ public class BoidController : MonoBehaviour
 
     private Vector3 ApplyChase()
     {
-        throw new NotImplementedException();
+        return (2 * (currentTarget.transform.position - transform.position).normalized) - rb.velocity.normalized;
     }
 
     public bool isSeeing(BoidController otherBoid)

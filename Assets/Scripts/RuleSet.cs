@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-[System.Serializable]
+[Serializable]
 public class RuleSet
 {
     public Transform spawnPoint;
@@ -8,7 +9,7 @@ public class RuleSet
     public int boidsCount = 10;
     [Range(0f, 30f)]
     public float maxVelocity = 5;
-    [Range(0f, 5f)]
+    [Range(0f, 20f)]
     public float maxAcceleration = 1;
     [Range(0f, 180f)]
     public float seeAngle = 180;
@@ -17,4 +18,5 @@ public class RuleSet
     public RuleParameters cohesion;
     public RuleParameters collisionAvoidance;
     public RuleParameters targetChasing;
+    public Course course;
 }
