@@ -411,6 +411,11 @@ PrefabInstance:
       propertyPath: rules.Array.data[2].collisionAvoidance.isActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4006496154192624652, guid: 17dcf3597db2ce54d8f5ce785ce704de,
+        type: 3}
+      propertyPath: simulationTimeScale
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17dcf3597db2ce54d8f5ce785ce704de, type: 3}
 --- !u!1001 &5276150227617357311
