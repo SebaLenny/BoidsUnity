@@ -13,6 +13,7 @@ public class TargetManager : MonoBehaviour
     {
         bc.currentTarget = bc.ruleSet.course.getFirstTarget();
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (bc.currentTarget == other.gameObject)

@@ -13,11 +13,13 @@ public class BoidController : MonoBehaviour
     public RuleSet ruleSet;
     public GameObject currentTarget;
     public bool observe = false;
+    public static readonly int obstacleMask = 1 << LayerMask.NameToLayer("Boids");
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
+
     private void Start()
     {
         rb.velocity = startVelocity + new Vector3(UnityEngine.Random.Range(-randomStartingVelocity, randomStartingVelocity), UnityEngine.Random.Range(-randomStartingVelocity, randomStartingVelocity), UnityEngine.Random.Range(-randomStartingVelocity, randomStartingVelocity));
@@ -76,7 +78,7 @@ public class BoidController : MonoBehaviour
 
     private List<BoidController> GetNerbyBoids()
     {
-        List<BoidController> boids = Physics.OverlapSphere(transform.position, getMaxRadious(), 1 << LayerMask.NameToLayer("Boids"))
+        List<BoidController> boids = Physics.OverlapSphere(transform.position, getMaxRadious(), obstacleMask)
         .Select(c => c.GetComponent<BoidController>())
         .Where(c => c != null).ToList(); // use non aloc and try to settle for masks for boids separately
         boids.Remove(this);
@@ -217,13 +219,5 @@ public class BoidController : MonoBehaviour
     {
         Debug.DrawLine(transform.position, transform.position + rb.velocity, new Color(1, 0, 0, .2f), 0f);
         Debug.DrawLine(transform.position, transform.position + accelerationToApply, Color.green, 0f);
-    }
-
-    private void OnDrawGizmos()
-    {
-        if (observe)
-        {
-            //Gizmos.DrawWireSphere(transform.position, maxRadious);
-        }
     }
 }

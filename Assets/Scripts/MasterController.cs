@@ -1,33 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class MasterController : Singleton<MasterController>
 {
+    [Range(0.0f, 10f)]
+    public float simulationTimeScale = 1f;
     public List<RuleSet> rules;
     public Vector3 bounds;
     public GameObject boidPrefab;
     private int samplePointsCount = 100;
     private static List<Vector3> pointsOnSphere;
+
     public List<Vector3> PointsOnSphere { get { return pointsOnSphere; } }
-
-    private void OnValidate()
-    {
-        CreateMissingSpawnpoints();
-    }
-
-    private void CreateMissingSpawnpoints()
-    {
-        foreach (var rule in rules)
-        {
-            if (rule.spawnPoint == null)
-            {
-                GameObject dummy = new GameObject("SpawnPoint" + rules.IndexOf(rule));
-                dummy.transform.parent = transform;
-                rule.spawnPoint = dummy.transform;
-            }
-        }
-    }
-
     protected override void Awake()
     {
         base.Awake();
@@ -37,6 +22,21 @@ public class MasterController : Singleton<MasterController>
     private void Start()
     {
         SpawnGroups();
+    }
+    private void OnValidate()
+    {
+        CreateMissingSpawnpoints();
+    }
+
+    private void Update()
+    {
+        SetSimulationTime(simulationTimeScale);
+    }
+
+    private void SetSimulationTime(float scale)
+    {
+        Time.timeScale = scale;
+        Time.fixedDeltaTime = 0.02f * scale;
     }
 
     private void SpawnGroups()
@@ -51,6 +51,19 @@ public class MasterController : Singleton<MasterController>
                 dummy.GetComponent<BoidController>().ruleSet = rules[r];
                 dummy.GetComponentInChildren<Renderer>().material.color = col;
                 dummy.GetComponentInChildren<Renderer>().material.SetColor("_EmissionColor", hdr);
+            }
+        }
+    }
+
+    private void CreateMissingSpawnpoints()
+    {
+        foreach (var rule in rules)
+        {
+            if (rule.spawnPoint == null)
+            {
+                GameObject dummy = new GameObject("SpawnPoint" + rules.IndexOf(rule));
+                dummy.transform.parent = transform;
+                rule.spawnPoint = dummy.transform;
             }
         }
     }

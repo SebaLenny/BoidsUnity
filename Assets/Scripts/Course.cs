@@ -33,6 +33,7 @@ public class Course : MonoBehaviour
             }
         }
     }
+
     public GameObject getNextTarget(GameObject reachedTarget)
     {
         int indexOfReached = nodes.IndexOf(reachedTarget);

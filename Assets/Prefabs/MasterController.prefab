@@ -1,0 +1,372 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4006496152696031663
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4006496152696031662}
+  m_Layer: 0
+  m_Name: SpawnPoint4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4006496152696031662
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4006496152696031663}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.6, y: 10.2, z: 0.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4006496154192624655}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4006496153247149608
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4006496153247149611}
+  m_Layer: 0
+  m_Name: SpawnPoint3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4006496153247149611
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4006496153247149608}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 32.3, y: -30.57, z: 38.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4006496154192624655}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4006496153427889392
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4006496153427889395}
+  m_Layer: 0
+  m_Name: SpawnPoint1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4006496153427889395
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4006496153427889392}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -45.5, y: -30.57, z: 37.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4006496154192624655}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4006496153539490796
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4006496153539490799}
+  m_Layer: 0
+  m_Name: SpawnPoint2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4006496153539490799
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4006496153539490796}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 29.2, y: -30.57, z: -35.39}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4006496154192624655}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4006496154192624653
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4006496154192624655}
+  - component: {fileID: 4006496154192624652}
+  - component: {fileID: 4006496154192624654}
+  m_Layer: 0
+  m_Name: MasterController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4006496154192624655
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4006496154192624653}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4006496154244245238}
+  - {fileID: 4006496153427889395}
+  - {fileID: 4006496153539490799}
+  - {fileID: 4006496153247149611}
+  - {fileID: 4006496152696031662}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4006496154192624652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4006496154192624653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 385021ba3155f654eaa82ddc0a3f9510, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rules:
+  - spawnPoint: {fileID: 4006496154244245238}
+    boidsCount: 5
+    maxVelocity: 5
+    maxAcceleration: 5
+    seeAngle: 130
+    aligment:
+      isActive: 1
+      considerOtherGroups: 0
+      range: 8
+      strenght: 3
+    separation:
+      isActive: 1
+      considerOtherGroups: 1
+      range: 3
+      strenght: 5
+    cohesion:
+      isActive: 1
+      considerOtherGroups: 0
+      range: 8
+      strenght: 3
+    collisionAvoidance:
+      isActive: 1
+      considerOtherGroups: 0
+      range: 20
+      strenght: 5
+    targetChasing:
+      isActive: 1
+      considerOtherGroups: 0
+      range: 0
+      strenght: 20
+    course: {fileID: 0}
+  - spawnPoint: {fileID: 4006496153427889395}
+    boidsCount: 5
+    maxVelocity: 5
+    maxAcceleration: 5
+    seeAngle: 130
+    aligment:
+      isActive: 1
+      considerOtherGroups: 0
+      range: 8
+      strenght: 3
+    separation:
+      isActive: 1
+      considerOtherGroups: 1
+      range: 3
+      strenght: 5
+    cohesion:
+      isActive: 1
+      considerOtherGroups: 0
+      range: 8
+      strenght: 3
+    collisionAvoidance:
+      isActive: 1
+      considerOtherGroups: 0
+      range: 20
+      strenght: 5
+    targetChasing:
+      isActive: 1
+      considerOtherGroups: 0
+      range: 0
+      strenght: 20
+    course: {fileID: 0}
+  - spawnPoint: {fileID: 4006496153539490799}
+    boidsCount: 5
+    maxVelocity: 5
+    maxAcceleration: 5
+    seeAngle: 130
+    aligment:
+      isActive: 1
+      considerOtherGroups: 0
+      range: 8
+      strenght: 3
+    separation:
+      isActive: 1
+      considerOtherGroups: 1
+      range: 3
+      strenght: 5
+    cohesion:
+      isActive: 1
+      considerOtherGroups: 0
+      range: 8
+      strenght: 3
+    collisionAvoidance:
+      isActive: 1
+      considerOtherGroups: 0
+      range: 20
+      strenght: 5
+    targetChasing:
+      isActive: 1
+      considerOtherGroups: 0
+      range: 0
+      strenght: 20
+    course: {fileID: 0}
+  - spawnPoint: {fileID: 4006496153247149611}
+    boidsCount: 5
+    maxVelocity: 5
+    maxAcceleration: 5
+    seeAngle: 130
+    aligment:
+      isActive: 1
+      considerOtherGroups: 0
+      range: 8
+      strenght: 3
+    separation:
+      isActive: 1
+      considerOtherGroups: 1
+      range: 3
+      strenght: 5
+    cohesion:
+      isActive: 1
+      considerOtherGroups: 0
+      range: 8
+      strenght: 3
+    collisionAvoidance:
+      isActive: 1
+      considerOtherGroups: 0
+      range: 20
+      strenght: 5
+    targetChasing:
+      isActive: 1
+      considerOtherGroups: 0
+      range: 0
+      strenght: 20
+    course: {fileID: 0}
+  - spawnPoint: {fileID: 4006496152696031662}
+    boidsCount: 5
+    maxVelocity: 5
+    maxAcceleration: 5
+    seeAngle: 130
+    aligment:
+      isActive: 1
+      considerOtherGroups: 0
+      range: 8
+      strenght: 3
+    separation:
+      isActive: 1
+      considerOtherGroups: 1
+      range: 3
+      strenght: 5
+    cohesion:
+      isActive: 1
+      considerOtherGroups: 0
+      range: 8
+      strenght: 3
+    collisionAvoidance:
+      isActive: 1
+      considerOtherGroups: 0
+      range: 20
+      strenght: 5
+    targetChasing:
+      isActive: 1
+      considerOtherGroups: 0
+      range: 0
+      strenght: 20
+    course: {fileID: 0}
+  bounds: {x: 50, y: 50, z: 50}
+  boidPrefab: {fileID: 3192901241293007511, guid: aa1a4dafb8c005744b28ee10c905f148,
+    type: 3}
+--- !u!114 &4006496154192624654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4006496154192624653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cf1333135199204fa48e561707e2d5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &4006496154244245239
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4006496154244245238}
+  m_Layer: 0
+  m_Name: SpawnPoint0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4006496154244245238
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4006496154244245239}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -34.899994, y: -30.57, z: -35.39}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4006496154192624655}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
