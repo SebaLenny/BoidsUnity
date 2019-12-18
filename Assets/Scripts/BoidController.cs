@@ -219,4 +219,9 @@ public class BoidController : MonoBehaviour
         Debug.DrawLine(transform.position, transform.position + rb.velocity, new Color(1, 0, 0, .2f), 0f);
         Debug.DrawLine(transform.position, transform.position + accelerationToApply, Color.green, 0f);
     }
+
+    public void ReportCollision(float magnitude)
+    {
+        //asd
+    }
 }
