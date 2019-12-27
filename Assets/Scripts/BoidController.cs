@@ -26,7 +26,6 @@ public class BoidController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        ApplyBounds();
         accelerationToApply += GetForces();
         ApplyVectors();
         transform.rotation = Quaternion.LookRotation(rb.velocity, Vector3.up);
@@ -34,20 +33,6 @@ public class BoidController : MonoBehaviour
         {
             DrawDebugs();
         }
-    }
-
-    private void ApplyBounds()
-    {
-        Vector3 pos = transform.position;
-        Vector3 newPos = pos;
-        Vector3 bound = MasterController.Instance.bounds;
-        if (pos.x > bound.x) newPos.x = -bound.x;
-        if (pos.x < -bound.x) newPos.x = bound.x;
-        if (pos.y > bound.y) newPos.y = -bound.y;
-        if (pos.y < -bound.y) newPos.y = bound.y;
-        if (pos.z > bound.z) newPos.z = -bound.z;
-        if (pos.z < -bound.z) newPos.z = bound.z;
-        transform.position = newPos;
     }
 
     public Vector3 GetForces()

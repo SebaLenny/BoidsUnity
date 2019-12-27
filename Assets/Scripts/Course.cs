@@ -5,47 +5,42 @@ public class Course : MonoBehaviour
 {
     public bool looping = false;
     public bool showPath = false;
-    public List<GameObject> nodes;
+    public LinkedList<GameObject> nodes;
 
-    private void OnValidate()
+    private void Awake()
     {
-        if (nodes != null)
+        nodes = new LinkedList<GameObject>();
+        foreach (Transform child in transform)
         {
-            foreach (Transform child in transform)
-            {
-                if (nodes.IndexOf(child.gameObject) == -1)
-                    nodes.Add(child.gameObject);
-            }
+            nodes.AddLast(child.gameObject);
         }
     }
 
     private void Update()
     {
-        if (showPath && nodes.Count > 1)
+        if (nodes.Count < 2)
+            return;
+        var node = nodes.First;
+        while (node != null && node.Next != null)
         {
-            for (int i = 0; i < nodes.Count - 1; i++)
-            {
-                Debug.DrawLine(nodes[i].transform.position, nodes[i + 1].transform.position);
-            }
-            if (looping)
-            {
-                Debug.DrawLine(nodes[nodes.Count - 1].transform.position, nodes[0].transform.position);
-            }
+            Vector3 a = node.Value.transform.position;
+            node = node.Next;
+            Vector3 b = node.Value.transform.position;
+            Debug.DrawLine(a, b);
         }
+        if (looping)
+            Debug.DrawLine(nodes.First.Value.transform.position, nodes.Last.Value.transform.position);
     }
 
     public GameObject getNextTarget(GameObject reachedTarget)
     {
-        int indexOfReached = nodes.IndexOf(reachedTarget);
-        if (indexOfReached == -1) return null;
-        int nextIndex = (indexOfReached + 1) % nodes.Count;
-        if (looping) return nodes[nextIndex];
-        else if (nextIndex != 0) return nodes[nextIndex];
-        else return null;
+        if (nodes.Last.Value == reachedTarget && looping)
+            return getFirstTarget();
+        return nodes.Find(reachedTarget).Next?.Value;
     }
 
     public GameObject getFirstTarget()
     {
-        return nodes?[0];
+        return nodes.First.Value;
     }
 }

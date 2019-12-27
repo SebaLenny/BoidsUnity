@@ -7,7 +7,6 @@ public class MasterController : Singleton<MasterController>
     [Range(0.0f, 10f)]
     public float simulationTimeScale = 1f;
     public List<RuleSet> rules;
-    public Vector3 bounds;
     public GameObject boidPrefab;
     private int samplePointsCount = 100;
     private static List<Vector3> pointsOnSphere;
@@ -17,12 +16,14 @@ public class MasterController : Singleton<MasterController>
     {
         base.Awake();
         GeneratePoints();
+        CreateMissingSpawnpoints();
     }
 
     private void Start()
     {
         SpawnGroups();
     }
+
     private void OnValidate()
     {
         CreateMissingSpawnpoints();
