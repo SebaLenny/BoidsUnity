@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [RequireComponent(typeof(BoidController))]
 public class TargetManager : MonoBehaviour
 {
     private BoidController bc;
+    public event Action Checkpoint = delegate { };
+
     private void Awake()
     {
         bc = GetComponent<BoidController>();
@@ -19,6 +22,7 @@ public class TargetManager : MonoBehaviour
         if (bc.currentTarget == other.gameObject)
         {
             bc.currentTarget = bc.ruleSet.course.getNextTarget(other.gameObject);
+            Checkpoint();
         }
     }
 }

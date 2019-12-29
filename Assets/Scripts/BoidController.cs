@@ -8,8 +8,6 @@ public class BoidController : MonoBehaviour
     private Rigidbody rb;
     private Vector3 accelerationToApply;
     public Vector3 startVelocity;
-    [Range(0f, 1f)]
-    public float randomStartingVelocity = 0f;
     public RuleSet ruleSet;
     public GameObject currentTarget;
     public bool observe = false;
@@ -17,11 +15,6 @@ public class BoidController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-    }
-
-    private void Start()
-    {
-        rb.velocity = startVelocity + new Vector3(UnityEngine.Random.Range(-randomStartingVelocity, randomStartingVelocity), UnityEngine.Random.Range(-randomStartingVelocity, randomStartingVelocity), UnityEngine.Random.Range(-randomStartingVelocity, randomStartingVelocity));
     }
 
     private void FixedUpdate()
@@ -148,7 +141,7 @@ public class BoidController : MonoBehaviour
         Quaternion.FromToRotation(transform.position, rb.velocity);
         Vector3 force = Vector3.zero;
         int hits = 0;
-        foreach (var point in MasterController.Instance.PointsOnSphere)
+        foreach (var point in DirectionHelper.PointsOnSphere)
         {
             Vector3 rotatedPoint = (rotation * point) * ruleSet.collisionAvoidance.range;
             if (isSeeing(transform.position + rotatedPoint))

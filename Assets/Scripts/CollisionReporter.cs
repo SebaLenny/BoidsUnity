@@ -8,6 +8,7 @@ using UnityEngine;
 public class NewBehaviourScript : MonoBehaviour
 {
     private BoidController bc;
+
     void Start()
     {
         bc = GetComponent<BoidController>();

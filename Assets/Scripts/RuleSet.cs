@@ -20,7 +20,7 @@ public class RuleSet
     public RuleParameters collisionAvoidance;
     public RuleParameters targetChasing;
     public Course course;
-
+    public float score = 0f;
     private List<float> fieldsList = null;
     public List<float> FieldsList
     {
@@ -58,4 +58,6 @@ public class RuleSet
         fieldsList.Add(targetChasing.strenght);
         return fieldsList;
     }
+
+
 }
