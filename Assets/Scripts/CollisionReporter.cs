@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(ScoreUpcaster))]
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Collider))]
-public class NewBehaviourScript : MonoBehaviour
+public class CollisionReporter : MonoBehaviour
 {
     private ScoreUpcaster su;
 
