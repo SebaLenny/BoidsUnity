@@ -2,20 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(BoidController))]
+[RequireComponent(typeof(ScoreUpcaster))]
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Collider))]
 public class NewBehaviourScript : MonoBehaviour
 {
-    private BoidController bc;
+    private ScoreUpcaster su;
 
     void Start()
     {
-        bc = GetComponent<BoidController>();
+        su = GetComponent<ScoreUpcaster>();
     }
 
     private void OnCollisionEnter(Collision other)
     {
-        bc.ReportCollision(other.impulse.sqrMagnitude);
+        su.ReportCollision(other.impulse.sqrMagnitude);
     }
 }

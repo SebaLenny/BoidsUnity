@@ -20,7 +20,8 @@ public class RuleSet
     public RuleParameters collisionAvoidance;
     public RuleParameters targetChasing;
     public Course course;
-    public float score = 0f;
+    public float timeScore = 0f;
+    public float collisionScore = 0f;
     private List<float> fieldsList = null;
     public List<float> FieldsList
     {

@@ -166,14 +166,7 @@ public class BoidController : MonoBehaviour
                 }
             }
         }
-        if (hits == 0)
-        {
-            return Vector3.zero;
-        }
-        else
-        {
-            return force;
-        }
+        return hits != 0 ? force : Vector3.zero;
     }
 
     private Vector3 ApplyChase()
@@ -191,15 +184,9 @@ public class BoidController : MonoBehaviour
         return Vector3.Angle(rb.velocity, point - transform.position) < ruleSet.seeAngle;
     }
 
-
     public void DrawDebugs()
     {
         Debug.DrawLine(transform.position, transform.position + rb.velocity, new Color(1, 0, 0, .2f), 0f);
         Debug.DrawLine(transform.position, transform.position + accelerationToApply, Color.green, 0f);
-    }
-
-    public void ReportCollision(float magnitude)
-    {
-        //asd
     }
 }

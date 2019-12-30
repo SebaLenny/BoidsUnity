@@ -18,9 +18,12 @@ public class ScoreUpcaster : MonoBehaviour
 
     private void ReportScore()
     {
-        bc.ruleSet.score += 1f / (Time.frameCount - lastCheck);
+        bc.ruleSet.timeScore += 1f / (Time.frameCount - lastCheck);
         SetClock();
-        Debug.Log(bc.ruleSet.score);
+    }
+    public void ReportCollision(float magnitude)
+    {
+        bc.ruleSet.collisionScore += magnitude;
     }
 
     private void SetClock()
