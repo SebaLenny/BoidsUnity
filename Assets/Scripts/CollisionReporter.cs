@@ -9,7 +9,7 @@ public class CollisionReporter : MonoBehaviour
 {
     private ScoreUpcaster su;
 
-    void Start()
+    void Awake()
     {
         su = GetComponent<ScoreUpcaster>();
     }

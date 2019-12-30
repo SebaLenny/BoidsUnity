@@ -21,6 +21,7 @@ public class ScoreUpcaster : MonoBehaviour
         bc.ruleSet.timeScore += 1f / (Time.frameCount - lastCheck);
         SetClock();
     }
+    
     public void ReportCollision(float magnitude)
     {
         bc.ruleSet.collisionScore += magnitude;
