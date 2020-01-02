@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 385021ba3155f654eaa82ddc0a3f9510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rulesCount: 5
+  rulesCount: 8
   rules: []
   spawnPoint: {fileID: 153120999}
   course: {fileID: 1693151567}
