@@ -23,10 +23,45 @@ public class RuleSet
     public float timeScore = 0f;
     public float collisionScore = 0f;
     private List<float> fieldsList = null;
+    private List<GameObject> boids;
+
+    public RuleSet(Transform spawnPoint, Course course)
+    {
+        boids = new List<GameObject>();
+        aligment = new RuleParameters();
+        separation = new RuleParameters { considerOtherGroups = true };
+        cohesion = new RuleParameters();
+        collisionAvoidance = new RuleParameters();
+        targetChasing = new RuleParameters();
+        this.spawnPoint = spawnPoint;
+        this.course = course;
+        GenerateFieldsList();
+    }
+
+    public void SpawnBoids(float colour, GameObject boidPrefab)
+    {
+        Color col = Color.HSVToRGB(colour, 1, 1);
+        Color hdr = Color.HSVToRGB(colour, 1, .35f);
+        for (int i = 0; i < boidsCount; i++)
+        {
+            GameObject boid = GameObject.Instantiate(boidPrefab, spawnPoint.position, Quaternion.identity);
+            boid.GetComponent<BoidController>().ruleSet = this;
+            boid.GetComponentInChildren<Renderer>().material.color = col;
+            boid.GetComponentInChildren<Renderer>().material.SetColor("_EmissionColor", hdr);
+            boids.Add(boid);
+        }
+    }
+
     public List<float> FieldsList
     {
         get { return fieldsList ?? GenerateFieldsList(); }
         set { SetFields(value); }
+    }
+
+    public List<float> FieldsListNormalized
+    {
+        get { return GenerateFieldsListNormalized(); }
+        set { SetFieldsNormalized(value); }
     }
 
     private void SetFields(List<float> value)
@@ -60,5 +95,34 @@ public class RuleSet
         return fieldsList;
     }
 
+    private void SetFieldsNormalized(List<float> value)
+    {
+        seeAngle = value[0].Map(0, 1, 0, 180);
+        aligment.range = value[1].Map(0, 1, 0, 15);
+        aligment.strenght = value[2].Map(0, 1, 0, 5);
+        separation.range = value[3].Map(0, 1, 0, 15);
+        separation.strenght = value[4].Map(0, 1, 0, 5);
+        cohesion.range = value[5].Map(0, 1, 0, 15);
+        cohesion.strenght = value[6].Map(0, 1, 0, 5);
+        collisionAvoidance.range = value[7].Map(0, 1, 0, 15);
+        collisionAvoidance.strenght = value[8].Map(0, 1, 0, 5);
+        targetChasing.strenght = value[9].Map(0, 1, 0, 5);
+        fieldsList = value;
+    }
 
+    private List<float> GenerateFieldsListNormalized()
+    {
+        fieldsList = new List<float>();
+        fieldsList.Add(seeAngle.Map(0, 180, 0, 1));
+        fieldsList.Add(aligment.range.Map(0, 15, 0, 1));
+        fieldsList.Add(aligment.strenght.Map(0, 5, 0, 1));
+        fieldsList.Add(separation.range.Map(0, 15, 0, 1));
+        fieldsList.Add(separation.strenght.Map(0, 5, 0, 1));
+        fieldsList.Add(cohesion.range.Map(0, 15, 0, 1));
+        fieldsList.Add(cohesion.strenght.Map(0, 5, 0, 1));
+        fieldsList.Add(collisionAvoidance.range.Map(0, 15, 0, 1));
+        fieldsList.Add(collisionAvoidance.strenght.Map(0, 5, 0, 1));
+        fieldsList.Add(targetChasing.strenght.Map(0, 5, 0, 1));
+        return fieldsList;
+    }
 }

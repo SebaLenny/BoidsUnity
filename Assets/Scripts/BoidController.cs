@@ -11,10 +11,11 @@ public class BoidController : MonoBehaviour
     public RuleSet ruleSet;
     public GameObject currentTarget;
     public bool observe = false;
-
+    private static int obstacleLayer;
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        obstacleLayer = 1 << LayerMask.NameToLayer("Obstacles");
     }
 
     private void FixedUpdate()
@@ -147,7 +148,7 @@ public class BoidController : MonoBehaviour
             if (isSeeing(transform.position + rotatedPoint))
             {
                 RaycastHit hit;
-                if (Physics.Raycast(transform.position, rotatedPoint, out hit, ruleSet.collisionAvoidance.range, 1 << LayerMask.NameToLayer("Obstacles")))
+                if (Physics.Raycast(transform.position, rotatedPoint, out hit, ruleSet.collisionAvoidance.range, obstacleLayer))
                 {
                     float magnitude = 2 / (hit.distance + 0.01f);
                     force -= rotatedPoint * magnitude;
