@@ -14,6 +14,7 @@ public class MasterController : Singleton<MasterController>
     {
         base.Awake();
         CreateRules();
+        RandomiseRules();
         if (spawnPoint == null) spawnPoint = (new GameObject("SpawnPoint")).transform;
     }
 
@@ -28,6 +29,20 @@ public class MasterController : Singleton<MasterController>
         for (int i = 0; i < rulesCount; i++)
         {
             rules.Add(new RuleSet(spawnPoint, course));
+        }
+    }
+
+    private void RandomiseRules()
+    {
+        foreach (var rule in rules)
+        {
+            var norm = rule.FieldsListNormalized;
+            for (int i = 0; i < norm.Count; i++)
+            {
+                norm[i] += RandomFromDistribution.RandomRangeNormalDistribution(-.5f, .5f, RandomFromDistribution.ConfidenceLevel_e._999);
+                norm[i] = Mathf.Clamp01(norm[i]);
+            }
+            rule.FieldsListNormalized = norm;
         }
     }
 

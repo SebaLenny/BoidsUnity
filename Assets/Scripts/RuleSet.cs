@@ -22,7 +22,6 @@ public class RuleSet
     public Course course;
     public float timeScore = 0f;
     public float collisionScore = 0f;
-    private List<float> fieldsList = null;
     private List<GameObject> boids;
 
     public RuleSet(Transform spawnPoint, Course course)
@@ -35,7 +34,6 @@ public class RuleSet
         targetChasing = new RuleParameters();
         this.spawnPoint = spawnPoint;
         this.course = course;
-        GenerateFieldsList();
     }
 
     public void SpawnBoids(float colour, GameObject boidPrefab)
@@ -54,7 +52,7 @@ public class RuleSet
 
     public List<float> FieldsList
     {
-        get { return fieldsList ?? GenerateFieldsList(); }
+        get { return GenerateFieldsList(); }
         set { SetFields(value); }
     }
 
@@ -76,12 +74,11 @@ public class RuleSet
         collisionAvoidance.range = value[7];
         collisionAvoidance.strenght = value[8];
         targetChasing.strenght = value[9];
-        fieldsList = value;
     }
 
     private List<float> GenerateFieldsList()
     {
-        fieldsList = new List<float>();
+        var fieldsList = new List<float>();
         fieldsList.Add(seeAngle);
         fieldsList.Add(aligment.range);
         fieldsList.Add(aligment.strenght);
@@ -107,12 +104,11 @@ public class RuleSet
         collisionAvoidance.range = value[7].Map(0, 1, 0, 15);
         collisionAvoidance.strenght = value[8].Map(0, 1, 0, 5);
         targetChasing.strenght = value[9].Map(0, 1, 0, 5);
-        fieldsList = value;
     }
 
     private List<float> GenerateFieldsListNormalized()
     {
-        fieldsList = new List<float>();
+        var fieldsList = new List<float>();
         fieldsList.Add(seeAngle.Map(0, 180, 0, 1));
         fieldsList.Add(aligment.range.Map(0, 15, 0, 1));
         fieldsList.Add(aligment.strenght.Map(0, 5, 0, 1));
