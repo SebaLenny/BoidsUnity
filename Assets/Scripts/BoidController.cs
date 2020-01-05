@@ -118,11 +118,11 @@ public class BoidController : MonoBehaviour
 
     public Vector3 ApplyCohesion(List<BoidController> boids)
     {
+        if (boids.Count == 0) return Vector3.zero;
         if (!ruleSet.cohesion.considerOtherGroups)
         {
             boids = boids.Where(b => b.ruleSet == ruleSet).ToList();
         }
-        if (boids.Count == 0) return Vector3.zero;
         Vector3 averagePosition = Vector3.zero;
         int count = 0;
         foreach (var boid in boids)
@@ -133,8 +133,7 @@ public class BoidController : MonoBehaviour
                 count++;
             }
         }
-        if (count != 0)
-            averagePosition /= count;
+        if (count == 0) return Vector3.zero;
         return averagePosition - transform.position;
     }
 

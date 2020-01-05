@@ -16,6 +16,6 @@ public class CollisionReporter : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        su.ReportCollision(other.impulse.sqrMagnitude);
+        su.ReportCollision(Mathf.Min(other.impulse.sqrMagnitude, 1));
     }
 }
