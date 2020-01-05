@@ -12,10 +12,12 @@ public class BoidController : MonoBehaviour
     public GameObject currentTarget;
     public bool observe = false;
     private static int obstacleLayer;
+    private static int boidsLayer;
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         obstacleLayer = 1 << LayerMask.NameToLayer("Obstacles");
+        boidsLayer = 1 << LayerMask.NameToLayer("Boids");
     }
 
     private void FixedUpdate()
@@ -56,7 +58,7 @@ public class BoidController : MonoBehaviour
 
     private List<BoidController> GetNerbyBoids()
     {
-        List<BoidController> boids = Physics.OverlapSphere(transform.position, getMaxRadious(), 1 << LayerMask.NameToLayer("Boids"))
+        List<BoidController> boids = Physics.OverlapSphere(transform.position, getMaxRadious(), boidsLayer)
         .Select(c => c.GetComponent<BoidController>())
         .Where(c => c != null).ToList(); // use non aloc and try to settle for masks for boids separately
         boids.Remove(this);
