@@ -22,7 +22,7 @@ public class RuleSet
     public Course course;
     public float timeScore = 0f;
     public float collisionScore = 0f;
-    private List<GameObject> boids;
+    public List<GameObject> boids;
 
     public RuleSet(Transform spawnPoint, Course course)
     {
@@ -121,5 +121,14 @@ public class RuleSet
         fieldsList.Add(collisionAvoidance.strenght.Map(0, 5, 0, 1));
         fieldsList.Add(targetChasing.strenght.Map(0, 5, 0, 1));
         return fieldsList;
+    }
+
+    public void DisposeAllBoids()
+    {
+        foreach (var boid in boids)
+        {
+            GameObject.Destroy(boid);
+        }
+        boids = new List<GameObject>();
     }
 }

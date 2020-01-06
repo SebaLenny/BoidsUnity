@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Course : MonoBehaviour
@@ -6,6 +7,7 @@ public class Course : MonoBehaviour
     public bool looping = false;
     public bool showPath = false;
     public LinkedList<GameObject> nodes;
+    public event Action Finished = delegate { };
 
     private void Awake()
     {
@@ -14,6 +16,7 @@ public class Course : MonoBehaviour
         {
             nodes.AddLast(child.gameObject);
         }
+        nodes.Last.Value.AddComponent<CollisionUpcaster>();
     }
 
     private void Update()
@@ -42,5 +45,10 @@ public class Course : MonoBehaviour
     public GameObject getFirstTarget()
     {
         return nodes.First.Value;
+    }
+
+    public void TriggerFinish()
+    {
+        if (!looping) Finished();
     }
 }

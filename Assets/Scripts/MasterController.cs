@@ -1,6 +1,13 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+public enum SimulationState
+{
+    Running,
+    Finished
+}
 
 public class MasterController : Singleton<MasterController>
 {
@@ -10,20 +17,27 @@ public class MasterController : Singleton<MasterController>
     public Transform spawnPoint;
     public Course course;
     public GameObject boidPrefab;
+    private SimulationState simulationState = SimulationState.Running;
 
     protected override void Awake()
     {
         base.Awake();
-        geneticAlgorithm = new GeneticAlgorithm();
-        geneticAlgorithm.GenerateRandomGeneration();
-        CreateRules();
-        ReadLasGeneration();
+        InitSimulation();
         if (spawnPoint == null) spawnPoint = (new GameObject("SpawnPoint")).transform;
     }
 
     private void Start()
     {
         SpawnGroups();
+    }
+
+    private void InitSimulation()
+    {
+        geneticAlgorithm = new GeneticAlgorithm();
+        geneticAlgorithm.GenerateRandomGeneration();
+        CreateRules();
+        ReadLasGeneration();
+        course.Finished += FirstBoidFinished;
     }
 
     private void CreateRules()
@@ -49,6 +63,22 @@ public class MasterController : Singleton<MasterController>
         for (int r = 0; r < rules.Count; r++)
         {
             rules[r].SpawnBoids(r / (float)rules.Count, boidPrefab);
+        }
+    }
+
+    private void FirstBoidFinished()
+    {
+        if (simulationState == SimulationState.Finished) return;
+        simulationState = SimulationState.Finished;
+        StartCoroutine(DisposeBoidsAfter(5f));
+    }
+
+    private IEnumerator DisposeBoidsAfter(float time)
+    {
+        yield return new WaitForSecondsRealtime(time);
+        foreach (var rule in rules)
+        {
+            rule.DisposeAllBoids();
         }
     }
 }

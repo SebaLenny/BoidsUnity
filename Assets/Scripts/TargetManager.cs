@@ -24,5 +24,9 @@ public class TargetManager : MonoBehaviour
             bc.currentTarget = bc.ruleSet.course.getNextTarget(other.gameObject);
             Checkpoint();
         }
+        if (bc.currentTarget == null)
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

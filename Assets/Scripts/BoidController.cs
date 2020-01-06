@@ -24,11 +24,8 @@ public class BoidController : MonoBehaviour
     {
         accelerationToApply += GetForces();
         ApplyVectors();
-        transform.rotation = Quaternion.LookRotation(rb.velocity, Vector3.up);
-        if (observe)
-        {
-            DrawDebugs();
-        }
+        if(rb.velocity != Vector3.zero) transform.rotation = Quaternion.LookRotation(rb.velocity, Vector3.up);
+        if (observe) DrawDebugs();
     }
 
     public Vector3 GetForces()
