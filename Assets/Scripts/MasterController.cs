@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class MasterController : Singleton<MasterController>
 {
-    public int rulesCount = 5;
+    private int rulesCount = Generation.generationSize;
     public List<RuleSet> rules;
+    public GeneticAlgorithm geneticAlgorithm;
     public Transform spawnPoint;
     public Course course;
     public GameObject boidPrefab;
@@ -13,8 +14,10 @@ public class MasterController : Singleton<MasterController>
     protected override void Awake()
     {
         base.Awake();
+        geneticAlgorithm = new GeneticAlgorithm();
+        geneticAlgorithm.GenerateRandomGeneration();
         CreateRules();
-        SetRandomNormalRules();
+        ReadLasGeneration();
         if (spawnPoint == null) spawnPoint = (new GameObject("SpawnPoint")).transform;
     }
 
@@ -32,31 +35,12 @@ public class MasterController : Singleton<MasterController>
         }
     }
 
-    private void RandomiseRules()
+    private void ReadLasGeneration()
     {
-        foreach (var rule in rules)
+        Generation gen = geneticAlgorithm.GetLastGeneration();
+        for (int i = 0; i < rulesCount; i++)
         {
-            var norm = rule.FieldsListNormalized;
-            for (int i = 0; i < norm.Count; i++)
-            {
-                norm[i] += RandomFromDistribution.RandomRangeNormalDistribution(-.5f, .5f, RandomFromDistribution.ConfidenceLevel_e._999);
-                norm[i] = Mathf.Clamp01(norm[i]);
-            }
-            rule.FieldsListNormalized = norm;
-        }
-    }
-
-    private void SetRandomNormalRules()
-    {
-        foreach (var rule in rules)
-        {
-            var norm = rule.FieldsListNormalized;
-            for (int i = 0; i < norm.Count; i++)
-            {
-                norm[i] = RandomFromDistribution.RandomRangeNormalDistribution(0, 1, RandomFromDistribution.ConfidenceLevel_e._999);
-                norm[i] = Mathf.Clamp01(norm[i]);
-            }
-            rule.FieldsListNormalized = norm;
+            rules[i].FieldsListNormalized = gen.population[i].genes;
         }
     }
 
