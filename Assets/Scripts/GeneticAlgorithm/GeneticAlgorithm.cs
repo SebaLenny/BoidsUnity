@@ -1,13 +1,9 @@
+using System;
 using System.Collections.Generic;
 
 public class GeneticAlgorithm
 {
     public List<Generation> generations = new List<Generation>();
-
-    public void GenerateGeneration()
-    {
-        generations.Add(new Generation());
-    }
     public void GenerateRandomGeneration()
     {
         generations.Add(Generation.GenerateRandomGeneration());
@@ -21,5 +17,10 @@ public class GeneticAlgorithm
     public void FetchGeneration(List<RuleSet> rules)
     {
         GetLastGeneration().LoadGeneration(rules);
+    }
+
+    public void GenerateNextGeneration()
+    {
+        generations.Add(GetLastGeneration().GenerateNextGeneration());
     }
 }

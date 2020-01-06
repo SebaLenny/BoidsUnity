@@ -18,6 +18,7 @@ public class MasterController : Singleton<MasterController>
     public Course course;
     public GameObject boidPrefab;
     private SimulationState simulationState = SimulationState.Running;
+    public event Action Disposed = delegate { };
 
     protected override void Awake()
     {
@@ -38,6 +39,16 @@ public class MasterController : Singleton<MasterController>
         CreateRules();
         ReadLasGeneration();
         course.Finished += FirstBoidFinished;
+        Disposed += NextGeneration;
+    }
+
+    private void NextGeneration()
+    {
+        geneticAlgorithm.FetchGeneration(rules);
+        geneticAlgorithm.GenerateNextGeneration();
+        ReadLasGeneration();
+        SpawnGroups();
+        simulationState = SimulationState.Running;
     }
 
     private void CreateRules()
@@ -55,6 +66,9 @@ public class MasterController : Singleton<MasterController>
         for (int i = 0; i < rulesCount; i++)
         {
             rules[i].FieldsListNormalized = gen.population[i].genes;
+            rules[i].timeScore = gen.population[i].timeScore;
+            rules[i].collisionScore = gen.population[i].collisionScore;
+
         }
     }
 
@@ -80,5 +94,6 @@ public class MasterController : Singleton<MasterController>
         {
             rule.DisposeAllBoids();
         }
+        Disposed();
     }
 }

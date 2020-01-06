@@ -29,4 +29,9 @@ public class Generation
         }
         return dummy;
     }
+    ///TODO: FINISH THIS
+    public Generation GenerateNextGeneration()
+    {
+        return GenerateRandomGeneration();
+    }
 }
