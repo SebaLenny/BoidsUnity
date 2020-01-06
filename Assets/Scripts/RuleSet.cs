@@ -42,7 +42,8 @@ public class RuleSet
         Color hdr = Color.HSVToRGB(colour, 1, .35f);
         for (int i = 0; i < boidsCount; i++)
         {
-            GameObject boid = GameObject.Instantiate(boidPrefab, spawnPoint.position, Quaternion.identity);
+            var randomOffset = UnityEngine.Random.insideUnitSphere * 5f;
+            GameObject boid = GameObject.Instantiate(boidPrefab, spawnPoint.position + randomOffset, Quaternion.identity);
             boid.GetComponent<BoidController>().ruleSet = this;
             boid.GetComponentInChildren<Renderer>().material.color = col;
             boid.GetComponentInChildren<Renderer>().material.SetColor("_EmissionColor", hdr);
