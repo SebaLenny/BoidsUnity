@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
-
+using Newtonsoft.Json;
+using System.IO;
 public class GeneticAlgorithm
 {
+    public readonly static float mutationChance = 0.05f;
     public List<Generation> generations = new List<Generation>();
     public void GenerateRandomGeneration()
     {
@@ -21,6 +23,7 @@ public class GeneticAlgorithm
 
     public void GenerateNextGeneration()
     {
+        File.WriteAllText($"gen{generations.Count}.json", JsonConvert.SerializeObject(GetLastGeneration()));
         generations.Add(GetLastGeneration().GenerateNextGeneration());
     }
 }

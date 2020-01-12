@@ -18,6 +18,7 @@ public class MasterController : Singleton<MasterController>
     public Course course;
     public GameObject boidPrefab;
     private SimulationState simulationState = SimulationState.Running;
+    private static readonly float disposeTime = 3.5f;
     public event Action Disposed = delegate { };
 
     protected override void Awake()
@@ -83,7 +84,7 @@ public class MasterController : Singleton<MasterController>
     {
         if (simulationState == SimulationState.Finished) return;
         simulationState = SimulationState.Finished;
-        StartCoroutine(DisposeBoidsAfter(5f));
+        StartCoroutine(DisposeBoidsAfter(disposeTime));
     }
 
     private IEnumerator DisposeBoidsAfter(float time)

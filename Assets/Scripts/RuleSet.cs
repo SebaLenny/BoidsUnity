@@ -7,7 +7,7 @@ public class RuleSet
 {
     public Transform spawnPoint;
     [Range(0, 30)]
-    public int boidsCount = 5;
+    public int boidsCount = 3;
     [Range(0f, 30f)]
     public float maxVelocity = 5;
     [Range(0f, 20f)]
@@ -42,7 +42,7 @@ public class RuleSet
         Color hdr = Color.HSVToRGB(colour, 1, .35f);
         for (int i = 0; i < boidsCount; i++)
         {
-            var randomOffset = UnityEngine.Random.insideUnitSphere * 5f;
+            var randomOffset = UnityEngine.Random.insideUnitSphere * 10f;
             GameObject boid = GameObject.Instantiate(boidPrefab, spawnPoint.position + randomOffset, Quaternion.identity);
             boid.GetComponent<BoidController>().ruleSet = this;
             boid.GetComponentInChildren<Renderer>().material.color = col;

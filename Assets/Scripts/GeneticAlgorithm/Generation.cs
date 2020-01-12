@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Generation
 {
-    public readonly static int generationSize = 8;
+    public readonly static int generationSize = 16;
     public List<Chromosome> population = new List<Chromosome>();
 
     public void LoadGeneration(List<RuleSet> rules)
@@ -60,7 +60,7 @@ public class Generation
         // mutation
         foreach (var chromosome in toRet.population)
         {
-            chromosome.Mutate();
+            chromosome.Mutate(GeneticAlgorithm.mutationChance);
         }
 
         foreach (var chromosome in toRet.population)
@@ -74,10 +74,10 @@ public class Generation
     private void DebugPopulation(List<Chromosome> orderedPopulation)
     {
         Debug.Log("----\n");
-        Debug.Log($"Best chromosome: {orderedPopulation[0].timeScore / orderedPopulation[0].collisionScore}" +
+        Debug.Log($"Best chromosome: {orderedPopulation[0].timeScore / (1 + orderedPopulation[0].collisionScore)}" +
         $"   time score: {orderedPopulation[0].timeScore}" +
         $"   collision score: {orderedPopulation[0].collisionScore},");
-        Debug.Log($"Worst chromosome: {orderedPopulation[orderedPopulation.Count - 1].timeScore / orderedPopulation[orderedPopulation.Count - 1].collisionScore}" +
+        Debug.Log($"Worst chromosome: {orderedPopulation[orderedPopulation.Count - 1].timeScore / (1 + orderedPopulation[orderedPopulation.Count - 1].collisionScore)}" +
         $"   time score: {orderedPopulation[orderedPopulation.Count - 1].timeScore}" +
         $"   collision score: {orderedPopulation[orderedPopulation.Count - 1].collisionScore},");
     }

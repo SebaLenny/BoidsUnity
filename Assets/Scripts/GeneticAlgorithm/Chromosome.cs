@@ -38,12 +38,23 @@ public class Chromosome
         };
     }
 
-    public void Mutate()
+    public void MutateNormal()
     {
         for (int i = 0; i < genes.Count; i++)
         {
             genes[i] += RandomFromDistribution.RandomRangeNormalDistribution(-.125f, .125f, RandomFromDistribution.ConfidenceLevel_e._999);
             genes[i] = Mathf.Clamp(genes[i], 0f, 1f);
+        }
+    }
+
+    public void Mutate(float mutationChance)
+    {
+        for (int i = 0; i < genes.Count; i++)
+        {
+            if (mutationChance > Random.Range(0, 1f))
+            {
+                genes[i] = Random.Range(0f, 1f);
+            }
         }
     }
 
