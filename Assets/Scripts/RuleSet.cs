@@ -127,7 +127,7 @@ public class RuleSet
     {
         foreach (var boid in boids)
         {
-            GameObject.Destroy(boid);
+            GameObject.DestroyImmediate(boid);
         }
         boids = new List<GameObject>();
     }

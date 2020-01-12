@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -36,7 +37,9 @@ public class Generation
     public Generation GenerateNextGeneration()
     {
         var toRet = new Generation();
+
         var orderedPopulation = population.OrderByDescending(c => c.timeScore / (c.collisionScore + 1f)).Select(c => c.GenesCopy()).ToList();
+        DebugPopulation(orderedPopulation);
 
         // selection
         var pruned = Selection(orderedPopulation);
@@ -46,7 +49,7 @@ public class Generation
         while (toRet.population.Count != orderedPopulation.Count)
         {
             Chromosome child1, child2;
-            (child1, child2) = Breed(pruned[Random.Range(0, pruned.Count)], pruned[Random.Range(0, pruned.Count)]);
+            (child1, child2) = Breed(pruned[UnityEngine.Random.Range(0, pruned.Count)], pruned[UnityEngine.Random.Range(0, pruned.Count)]);
             toRet.population.Add(child1);
             if (orderedPopulation.Count - toRet.population.Count > 1)
             {
@@ -68,12 +71,23 @@ public class Generation
         return toRet;
     }
 
+    private void DebugPopulation(List<Chromosome> orderedPopulation)
+    {
+        Debug.Log("----\n");
+        Debug.Log($"Best chromosome: {orderedPopulation[0].timeScore / orderedPopulation[0].collisionScore}" +
+        $"   time score: {orderedPopulation[0].timeScore}" +
+        $"   collision score: {orderedPopulation[0].collisionScore},");
+        Debug.Log($"Worst chromosome: {orderedPopulation[orderedPopulation.Count - 1].timeScore / orderedPopulation[orderedPopulation.Count - 1].collisionScore}" +
+        $"   time score: {orderedPopulation[orderedPopulation.Count - 1].timeScore}" +
+        $"   collision score: {orderedPopulation[orderedPopulation.Count - 1].collisionScore},");
+    }
+
     public List<Chromosome> Selection(List<Chromosome> orderedPopulation)
     {
         var pruned = new List<Chromosome>();
         for (int i = 0; i < orderedPopulation.Count; i++)
         {
-            if (Random.value > i / (float)orderedPopulation.Count)
+            if (UnityEngine.Random.value > i / (float)orderedPopulation.Count)
             {
                 pruned.Add(orderedPopulation[i]);
             }
@@ -83,11 +97,11 @@ public class Generation
 
     public (Chromosome, Chromosome) Breed(Chromosome partent1, Chromosome partent2)
     {
-        int crossoverPoint = Random.Range(0, Chromosome.chromosomeSize);
+        int crossoverPoint = UnityEngine.Random.Range(0, Chromosome.chromosomeSize);
         var child1 = new Chromosome();
         var child2 = new Chromosome();
-        child1.genes = partent1.genes.Take(crossoverPoint).Union(partent2.genes.Skip(crossoverPoint)).ToList();
-        child2.genes = partent2.genes.Take(crossoverPoint).Union(partent1.genes.Skip(crossoverPoint)).ToList();
+        child1.genes = partent1.genes.Take(crossoverPoint).Concat(partent2.genes.Skip(crossoverPoint)).ToList();
+        child2.genes = partent2.genes.Take(crossoverPoint).Concat(partent1.genes.Skip(crossoverPoint)).ToList();
         return (child1, child2);
     }
 

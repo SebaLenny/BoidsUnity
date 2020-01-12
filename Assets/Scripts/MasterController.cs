@@ -68,7 +68,6 @@ public class MasterController : Singleton<MasterController>
             rules[i].FieldsListNormalized = gen.population[i].genes;
             rules[i].timeScore = gen.population[i].timeScore;
             rules[i].collisionScore = gen.population[i].collisionScore;
-
         }
     }
 
