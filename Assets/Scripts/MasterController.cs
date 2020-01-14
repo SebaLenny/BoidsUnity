@@ -11,7 +11,7 @@ public enum SimulationState
 
 public class MasterController : Singleton<MasterController>
 {
-    private int rulesCount = Generation.generationSize;
+    private int rulesCount = GeneticAlgorithm.generationSize;
     public List<RuleSet> rules;
     public GeneticAlgorithm geneticAlgorithm;
     public Transform spawnPoint;

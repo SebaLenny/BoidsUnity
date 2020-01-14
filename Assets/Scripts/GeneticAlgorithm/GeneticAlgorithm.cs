@@ -5,6 +5,8 @@ using System.IO;
 public class GeneticAlgorithm
 {
     public readonly static float mutationChance = 0.05f;
+    public readonly static int generationSize = 16;
+    public readonly static int chromosomeSize = 10;
     public List<Generation> generations = new List<Generation>();
     public void GenerateRandomGeneration()
     {

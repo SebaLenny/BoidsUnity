@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Generation
 {
-    public readonly static int generationSize = 16;
+    
     public List<Chromosome> population = new List<Chromosome>();
 
     public void LoadGeneration(List<RuleSet> rules)
@@ -27,7 +27,7 @@ public class Generation
     public static Generation GenerateRandomGeneration()
     {
         var dummy = new Generation();
-        for (int i = 0; i < generationSize; i++)
+        for (int i = 0; i < GeneticAlgorithm.generationSize; i++)
         {
             dummy.population.Add(Chromosome.GenerateRandomChromosome());
         }
@@ -97,7 +97,7 @@ public class Generation
 
     public (Chromosome, Chromosome) Breed(Chromosome partent1, Chromosome partent2)
     {
-        int crossoverPoint = UnityEngine.Random.Range(0, Chromosome.chromosomeSize);
+        int crossoverPoint = UnityEngine.Random.Range(0, GeneticAlgorithm.chromosomeSize);
         var child1 = new Chromosome();
         var child2 = new Chromosome();
         child1.genes = partent1.genes.Take(crossoverPoint).Concat(partent2.genes.Skip(crossoverPoint)).ToList();
