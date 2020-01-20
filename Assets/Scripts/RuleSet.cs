@@ -14,7 +14,7 @@ public class RuleSet
     public float maxAcceleration = 5;
     [Range(0f, 180f)]
     public float seeAngle = 180;
-    public RuleParameters aligment;
+    public RuleParameters alignment;
     public RuleParameters separation;
     public RuleParameters cohesion;
     public RuleParameters collisionAvoidance;
@@ -27,7 +27,7 @@ public class RuleSet
     public RuleSet(Transform spawnPoint, Course course)
     {
         boids = new List<GameObject>();
-        aligment = new RuleParameters();
+        alignment = new RuleParameters();
         separation = new RuleParameters { considerOtherGroups = true };
         cohesion = new RuleParameters();
         collisionAvoidance = new RuleParameters();
@@ -66,60 +66,60 @@ public class RuleSet
     private void SetFields(List<float> value)
     {
         seeAngle = value[0];
-        aligment.range = value[1];
-        aligment.strenght = value[2];
+        alignment.range = value[1];
+        alignment.strength = value[2];
         separation.range = value[3];
-        separation.strenght = value[4];
+        separation.strength = value[4];
         cohesion.range = value[5];
-        cohesion.strenght = value[6];
+        cohesion.strength = value[6];
         collisionAvoidance.range = value[7];
-        collisionAvoidance.strenght = value[8];
-        targetChasing.strenght = value[9];
+        collisionAvoidance.strength = value[8];
+        targetChasing.strength = value[9];
     }
 
     private List<float> GenerateFieldsList()
     {
         var fieldsList = new List<float>();
         fieldsList.Add(seeAngle);
-        fieldsList.Add(aligment.range);
-        fieldsList.Add(aligment.strenght);
+        fieldsList.Add(alignment.range);
+        fieldsList.Add(alignment.strength);
         fieldsList.Add(separation.range);
-        fieldsList.Add(separation.strenght);
+        fieldsList.Add(separation.strength);
         fieldsList.Add(cohesion.range);
-        fieldsList.Add(cohesion.strenght);
+        fieldsList.Add(cohesion.strength);
         fieldsList.Add(collisionAvoidance.range);
-        fieldsList.Add(collisionAvoidance.strenght);
-        fieldsList.Add(targetChasing.strenght);
+        fieldsList.Add(collisionAvoidance.strength);
+        fieldsList.Add(targetChasing.strength);
         return fieldsList;
     }
 
     private void SetFieldsNormalized(List<float> value)
     {
         seeAngle = value[0].Map(0, 1, 0, 180);
-        aligment.range = value[1].Map(0, 1, 0, 15);
-        aligment.strenght = value[2].Map(0, 1, 0, 5);
+        alignment.range = value[1].Map(0, 1, 0, 15);
+        alignment.strength = value[2].Map(0, 1, 0, 5);
         separation.range = value[3].Map(0, 1, 0, 15);
-        separation.strenght = value[4].Map(0, 1, 0, 5);
+        separation.strength = value[4].Map(0, 1, 0, 5);
         cohesion.range = value[5].Map(0, 1, 0, 15);
-        cohesion.strenght = value[6].Map(0, 1, 0, 5);
+        cohesion.strength = value[6].Map(0, 1, 0, 5);
         collisionAvoidance.range = value[7].Map(0, 1, 0, 15);
-        collisionAvoidance.strenght = value[8].Map(0, 1, 0, 5);
-        targetChasing.strenght = value[9].Map(0, 1, 0, 5);
+        collisionAvoidance.strength = value[8].Map(0, 1, 0, 5);
+        targetChasing.strength = value[9].Map(0, 1, 0, 5);
     }
 
     private List<float> GenerateFieldsListNormalized()
     {
         var fieldsList = new List<float>();
         fieldsList.Add(seeAngle.Map(0, 180, 0, 1));
-        fieldsList.Add(aligment.range.Map(0, 15, 0, 1));
-        fieldsList.Add(aligment.strenght.Map(0, 5, 0, 1));
+        fieldsList.Add(alignment.range.Map(0, 15, 0, 1));
+        fieldsList.Add(alignment.strength.Map(0, 5, 0, 1));
         fieldsList.Add(separation.range.Map(0, 15, 0, 1));
-        fieldsList.Add(separation.strenght.Map(0, 5, 0, 1));
+        fieldsList.Add(separation.strength.Map(0, 5, 0, 1));
         fieldsList.Add(cohesion.range.Map(0, 15, 0, 1));
-        fieldsList.Add(cohesion.strenght.Map(0, 5, 0, 1));
+        fieldsList.Add(cohesion.strength.Map(0, 5, 0, 1));
         fieldsList.Add(collisionAvoidance.range.Map(0, 15, 0, 1));
-        fieldsList.Add(collisionAvoidance.strenght.Map(0, 5, 0, 1));
-        fieldsList.Add(targetChasing.strenght.Map(0, 5, 0, 1));
+        fieldsList.Add(collisionAvoidance.strength.Map(0, 5, 0, 1));
+        fieldsList.Add(targetChasing.strength.Map(0, 5, 0, 1));
         return fieldsList;
     }
 

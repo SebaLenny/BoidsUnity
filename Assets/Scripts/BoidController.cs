@@ -33,15 +33,15 @@ public class BoidController : MonoBehaviour
         List<BoidController> boids = GetNerbyBoids();
         Vector3 force = Vector3.zero;
         if (ruleSet.separation.isActive)
-            force += ApplySeparation(boids.Where(b => Vector3.Distance(transform.position, b.transform.position) < ruleSet.separation.range).ToList()) * ruleSet.separation.strenght; // might be slow
-        if (ruleSet.aligment.isActive)
-            force += ApplyAligment(boids.Where(b => Vector3.Distance(transform.position, b.transform.position) < ruleSet.aligment.range).ToList()) * ruleSet.aligment.strenght; // might be slow
+            force += ApplySeparation(boids.Where(b => Vector3.Distance(transform.position, b.transform.position) < ruleSet.separation.range).ToList()) * ruleSet.separation.strength; // might be slow
+        if (ruleSet.alignment.isActive)
+            force += ApplyAlignment(boids.Where(b => Vector3.Distance(transform.position, b.transform.position) < ruleSet.alignment.range).ToList()) * ruleSet.alignment.strength; // might be slow
         if (ruleSet.cohesion.isActive)
-            force += ApplyCohesion(boids.Where(b => Vector3.Distance(transform.position, b.transform.position) < ruleSet.cohesion.range).ToList()) * ruleSet.cohesion.strenght; // might be slow
+            force += ApplyCohesion(boids.Where(b => Vector3.Distance(transform.position, b.transform.position) < ruleSet.cohesion.range).ToList()) * ruleSet.cohesion.strength; // might be slow
         if (ruleSet.collisionAvoidance.isActive)
-            force += ApplyCollisiton() * ruleSet.collisionAvoidance.strenght;
+            force += ApplyCollisiton() * ruleSet.collisionAvoidance.strength;
         if (ruleSet.targetChasing.isActive && currentTarget != null)
-            force += ApplyChase() * ruleSet.targetChasing.strenght;
+            force += ApplyChase() * ruleSet.targetChasing.strength;
         return force;
     }
 
@@ -64,7 +64,7 @@ public class BoidController : MonoBehaviour
 
     private float getMaxRadious()
     {
-        return Mathf.Max(Mathf.Max(Mathf.Max(Mathf.Max(ruleSet.targetChasing.range, ruleSet.collisionAvoidance.range), ruleSet.separation.range), ruleSet.cohesion.range), ruleSet.aligment.range);
+        return Mathf.Max(Mathf.Max(Mathf.Max(Mathf.Max(ruleSet.targetChasing.range, ruleSet.collisionAvoidance.range), ruleSet.separation.range), ruleSet.cohesion.range), ruleSet.alignment.range);
     }
 
     public Vector3 ApplySeparation(List<BoidController> boids)
@@ -91,10 +91,10 @@ public class BoidController : MonoBehaviour
         return averageForce;
     }
 
-    public Vector3 ApplyAligment(List<BoidController> boids)
+    public Vector3 ApplyAlignment(List<BoidController> boids)
     {
         if (boids.Count == 0) return Vector3.zero;
-        if (!ruleSet.aligment.considerOtherGroups)
+        if (!ruleSet.alignment.considerOtherGroups)
         {
             boids = boids.Where(b => b.ruleSet == ruleSet).ToList();
         }
