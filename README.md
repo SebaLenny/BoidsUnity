@@ -22,7 +22,7 @@ Run simluation
 
 ![Run](https://raw.githubusercontent.com/SebaLenny/BoidsUnity/master/Photos/run.png)
 
-Output simple satistics will be displated on console
+Output with simple satistics will be displayed in console
 
 ![Console output](https://raw.githubusercontent.com/SebaLenny/BoidsUnity/master/Photos/console.png)
 
@@ -30,6 +30,6 @@ Each generation is dumped into folder **GenerationsOutput[DATE]** as .json file
 
 ![Output folder](https://raw.githubusercontent.com/SebaLenny/BoidsUnity/master/Photos/out_folder.png)
 
-Grapsh can be generated using attached script
+Graphs can be generated using attached script
 
 ![Python file](https://raw.githubusercontent.com/SebaLenny/BoidsUnity/master/Photos/python_file.png)
