@@ -22,7 +22,7 @@ Run simluation
 
 ![Run](https://raw.githubusercontent.com/SebaLenny/BoidsUnity/master/Photos/run.png)
 
-Output simple satistics will be displated on console
+Output with simple satistics will be displayed in console
 
 ![Console output](https://raw.githubusercontent.com/SebaLenny/BoidsUnity/master/Photos/console.png)
 
