@@ -7,7 +7,7 @@ public class RuleSet
 {
     public Transform spawnPoint;
     [Range(0, 30)]
-    public int boidsCount = 3;
+    public int boidsCount = 5;
     [Range(0f, 30f)]
     public float maxVelocity = 5;
     [Range(0f, 20f)]

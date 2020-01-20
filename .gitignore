@@ -62,4 +62,7 @@ crashlytics-build.properties
 _private_/
 
 # JsonDotNet
-JsonDotNet/
+# JsonDotNet/
+
+# Custom
+Generations*
