@@ -15,16 +15,21 @@ https://assetstore.unity.com/packages/tools/random-from-distributions-statistica
 
 ## Usage
 Open scene called **ManyGroupsTest**
-![Scene](https://github.com/SebaLenny/BoidsUnity/Photos/scene.png)
+
+![Scene](https://raw.githubusercontent.com/SebaLenny/BoidsUnity/master/Photos/scene.png)
 
 Run simluation
-![Run](https://github.com/SebaLenny/BoidsUnity/Photos/run.png)
+
+![Run](https://raw.githubusercontent.com/SebaLenny/BoidsUnity/master/Photos/run.png)
 
 Output simple satistics will be displated on console
-![Console output](https://github.com/SebaLenny/BoidsUnity/Photos/console.png)
+
+![Console output](https://raw.githubusercontent.com/SebaLenny/BoidsUnity/master/Photos/console.png)
 
 Each generation is dumped into folder **GenerationsOutput[DATE]** as .json file
-![Output folder](https://github.com/SebaLenny/BoidsUnity/Photos/out_folder.png)
+
+![Output folder](https://raw.githubusercontent.com/SebaLenny/BoidsUnity/master/Photos/out_folder.png)
 
 Grapsh can be generated using attached script
-![Python file](https://github.com/SebaLenny/BoidsUnity/Photos/python_file.png)
+
+![Python file](https://raw.githubusercontent.com/SebaLenny/BoidsUnity/master/Photos/python_file.png)
